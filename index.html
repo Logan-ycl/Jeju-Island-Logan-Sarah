@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeju Island · Logan & Sarah · May 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #1a1410;
+  --paper: #faf7f2;
+  --warm:  #c8956c;
+  --gold:  #b8924a;
+  --blush: #e8c5b0;
+  --sage:  #7a9e7e;
+  --mist:  #e8e4de;
+  --day1:  #c8956c;
+  --day2:  #5b8fa8;
+  --day3:  #7a9e7e;
+  --day4:  #9b7eb8;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans', 'Noto Sans SC', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── BILINGUAL PATTERN ────────────────────────────
+   .en  = primary, full opacity, normal size
+   .zh  = secondary, muted, smaller, italic serif   */
+.zh {
+  display: block;
+  font-size: 11px;
+  color: rgba(26,20,16,.38);
+  font-style: italic;
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.5;
+  margin-top: 1px;
+}
+/* inline zh (inside a sentence) */
+span.zh {
+  display: inline;
+  margin-top: 0;
+  margin-left: 4px;
+}
+
+/* ── PETALS ──────────────────────────────────────── */
+.petal {
+  position: fixed; pointer-events: none; z-index: 0;
+  opacity: 0; animation: fall linear infinite;
+}
+@keyframes fall {
+  0%  { transform: translateY(-20px) rotate(0deg);   opacity:.7; }
+  100%{ transform: translateY(110vh) rotate(720deg); opacity:0;  }
+}
+
+/* ── HERO ────────────────────────────────────────── */
+.hero {
+  position: relative; height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg,#1a1410 0%,#2d1f18 40%,#3d2a20 100%);
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(200,149,108,.15) 0%,transparent 60%),
+    radial-gradient(ellipse at 70% 30%, rgba(91,143,168,.10)  0%,transparent 50%);
+}
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: clamp(11px,1.2vw,13px);
+  letter-spacing: .35em; color: var(--warm);
+  text-transform: uppercase; margin-bottom: 20px;
+  opacity:0; animation: fadeUp 1s ease .3s forwards;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px,8vw,108px); font-weight: 300;
+  color: var(--paper); line-height: .9;
+  text-align: center; letter-spacing: -.02em;
+  opacity:0; animation: fadeUp 1s ease .5s forwards;
+}
+.hero-title em { font-style:italic; color: var(--warm); }
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: clamp(15px,2vw,21px);
+  color: rgba(250,247,242,.55); margin-top: 18px;
+  letter-spacing: .1em;
+  opacity:0; animation: fadeUp 1s ease .7s forwards;
+}
+.hero-date {
+  font-size: 11px; letter-spacing: .3em; color: var(--gold);
+  margin-top: 28px; text-transform: uppercase;
+  opacity:0; animation: fadeUp 1s ease .9s forwards;
+}
+.hero-scroll {
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:0; animation: fadeUp 1s ease 1.2s forwards; cursor:pointer;
+}
+.hero-scroll span { font-size:9px; letter-spacing:.3em; color:rgba(250,247,242,.35); text-transform:uppercase; }
+.scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,var(--warm),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+@keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── NAV ─────────────────────────────────────────── */
+nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(250,247,242,.93); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--mist);
+  display:flex; align-items:center; justify-content:center;
+  gap:4px; padding:0 16px; height:54px; flex-wrap:wrap;
+}
+.nav-btn {
+  background:none; border:none; cursor:pointer;
+  font-family:'Noto Sans',sans-serif;
+  font-size:12px; letter-spacing:.05em;
+  color:rgba(26,20,16,.48); padding:7px 12px;
+  border-radius:20px; transition:all .2s; white-space:nowrap;
+}
+.nav-btn:hover { color:var(--ink); background:var(--mist); }
+.nav-btn.active { color:#fff; font-weight:500; }
+.nav-btn[data-tab="day1"].active { background:var(--day1); }
+.nav-btn[data-tab="day2"].active { background:var(--day2); }
+.nav-btn[data-tab="day3"].active { background:var(--day3); }
+.nav-btn[data-tab="day4"].active { background:var(--day4); }
+.nav-btn[data-tab="map"].active,
+.nav-btn[data-tab="app"].active,
+.nav-btn[data-tab="tips"].active { background:var(--ink); }
+
+/* ── SECTIONS ────────────────────────────────────── */
+.section { display:none; max-width:900px; margin:0 auto; padding:56px 24px 80px; }
+.section.active { display:block; animation:sectionIn .4s ease; }
+@keyframes sectionIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── DAY HEADER ──────────────────────────────────── */
+.day-header {
+  display:flex; align-items:baseline; gap:16px;
+  margin-bottom:38px; padding-bottom:18px;
+  border-bottom:1px solid var(--mist);
+}
+.day-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:70px; font-weight:300; line-height:1; color:var(--mist);
+}
+.day-info { flex:1; }
+.day-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px; font-weight:400; line-height:1.2;
+}
+.day-title em { font-style:italic; }
+.day-title .sub-zh {
+  display:block; font-size:13px; font-weight:300;
+  color:rgba(26,20,16,.38); font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+  letter-spacing:.04em; margin-top:2px;
+}
+.day-sub { font-size:11px; letter-spacing:.2em; color:rgba(26,20,16,.38); text-transform:uppercase; margin-top:4px; }
+.day-accent { width:38px; height:3px; border-radius:2px; margin-top:8px; }
+
+/* ── SECTION TITLE ───────────────────────────────── */
+.sec-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:19px; font-weight:400;
+  margin:34px 0 13px;
+  display:flex; align-items:baseline; gap:10px;
+}
+.sec-title .zh-label {
+  font-size:10px; letter-spacing:.16em;
+  color:rgba(26,20,16,.32); font-style:normal;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.sec-title::after { content:''; flex:1; height:1px; background:var(--mist); }
+
+/* ── TIMELINE ────────────────────────────────────── */
+.timeline { position:relative; margin:28px 0; }
+.timeline::before {
+  content:''; position:absolute;
+  left:50px; top:0; bottom:0; width:1px;
+  background:linear-gradient(to bottom,var(--mist),transparent);
+}
+.tl-item { display:flex; gap:18px; margin-bottom:16px; }
+.tl-time {
+  width:50px; text-align:right; flex-shrink:0;
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px; color:var(--gold);
+  padding-top:12px; letter-spacing:.04em;
+}
+.tl-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:var(--mist); border:2px solid var(--paper);
+  margin-top:14px; flex-shrink:0; position:relative; z-index:1;
+}
+.tl-dot.accent { background:var(--warm); }
+.tl-content {
+  flex:1; background:#fff; border-radius:12px;
+  padding:11px 15px; border:1px solid var(--mist);
+  transition:border-color .2s;
+}
+.tl-content:hover { border-color:var(--blush); }
+.tl-main { font-size:13.5px; font-weight:400; line-height:1.55; color:var(--ink); }
+.tl-main strong { font-weight:500; }
+.tl-meta { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
+
+/* ── TAGS ────────────────────────────────────────── */
+.tag {
+  font-size:10px; letter-spacing:.05em;
+  padding:3px 8px; border-radius:10px; font-weight:500;
+  line-height:1.4;
+}
+.tag-dur  { background:#f0ece6; color:#7a6a5a; }
+.tag-tx   { background:#e8f0f5; color:#4a7a96; }
+.tag-food { background:#f5ece8; color:#9a5a40; }
+.tag-shop { background:#ece8f5; color:#6a5a9a; }
+.tag-tip  { background:#eef5ec; color:#4a7a4a; }
+.tag-warn { background:#fdf0e8; color:#9a6030; }
+.tag-opt  { background:#f5f0e8; color:#8a7050; }
+.tag .zh  { display:inline; font-size:9px; margin-left:3px; margin-top:0; }
+
+/* ── CARDS ───────────────────────────────────────── */
+.cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:13px; margin:14px 0; }
+.card {
+  background:#fff; border-radius:15px;
+  padding:17px; border:1px solid var(--mist);
+}
+.card-icon { font-size:22px; margin-bottom:8px; }
+.card-title { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; }
+.card-sub { font-size:10px; letter-spacing:.1em; color:rgba(26,20,16,.36); text-transform:uppercase; font-family:'Cormorant Garamond',serif; font-style:italic; margin:2px 0 9px; }
+.card-body { font-size:13px; line-height:1.7; color:rgba(26,20,16,.72); }
+.card-body .zh { font-size:11px; }
+
+/* ── SEAT BOX ────────────────────────────────────── */
+.seat-box {
+  background:linear-gradient(135deg,#1a2d3d,#1a1d3d);
+  border-radius:14px; padding:18px 22px; margin:14px 0;
+  display:flex; gap:14px; align-items:center; color:var(--paper);
+}
+.seat-icon { font-size:32px; flex-shrink:0; }
+.seat-text h4 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px; color:var(--gold); margin-bottom:5px;
+}
+.seat-text h4 .zh { display:inline; font-size:11px; color:rgba(184,146,74,.6); }
+.seat-text p { font-size:12.5px; line-height:1.7; color:rgba(250,247,242,.68); }
+.seat-text p .zh { display:inline; font-size:11px; color:rgba(250,247,242,.38); }
+
+/* ── COST BOX ────────────────────────────────────── */
+.cost-box {
+  background:linear-gradient(135deg,#1a1410,#2d2018);
+  color:var(--paper); border-radius:15px;
+  padding:20px 22px; margin:13px 0;
+}
+.cost-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px; font-style:italic; color:var(--gold);
+  letter-spacing:.15em; margin-bottom:13px; text-transform:uppercase;
+}
+.cost-row {
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:7px 0; border-bottom:1px solid rgba(255,255,255,.07);
+  font-size:12.5px;
+}
+.cost-row:last-child { border-bottom:none; }
+.cost-row .lbl { color:rgba(250,247,242,.6); line-height:1.5; }
+.cost-row .lbl .zh { display:block; font-size:10px; color:rgba(250,247,242,.3); }
+.cost-row .amt { color:var(--gold); font-family:'Cormorant Garamond',serif; font-size:16px; flex-shrink:0; margin-left:12px; }
+.cost-total {
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-top:13px; padding-top:13px;
+  border-top:1px solid rgba(255,255,255,.18);
+}
+.cost-total .lbl { font-size:13px; color:var(--paper); }
+.cost-total .lbl .zh { display:block; font-size:10px; color:rgba(250,247,242,.38); }
+.cost-total .amt { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--warm); }
+
+/* ── WARN / OPTIONAL ─────────────────────────────── */
+.warn-box {
+  background:#fff8f0; border-left:3px solid var(--warm);
+  border-radius:0 12px 12px 0; padding:13px 15px; margin:10px 0;
+  font-size:13px; line-height:1.8;
+}
+.warn-box strong { color:var(--warm); font-weight:500; }
+.optional-box {
+  background:#f8f5f0; border:1px dashed var(--gold);
+  border-radius:12px; padding:14px 16px; margin:10px 0;
+  font-size:13px; line-height:1.8;
+}
+.opt-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px; color:var(--gold); font-style:italic;
+  margin-bottom:6px;
+}
+
+/* ── TABLE ───────────────────────────────────────── */
+.info-table { width:100%; border-collapse:collapse; font-size:12.5px; margin:10px 0; }
+.info-table th {
+  text-align:left; font-weight:500; font-size:10px;
+  letter-spacing:.12em; color:rgba(26,20,16,.38);
+  text-transform:uppercase; padding:8px 10px;
+  background:var(--paper); border-bottom:1px solid var(--mist);
+}
+.info-table td { padding:9px 10px; border-bottom:1px solid var(--mist); line-height:1.55; vertical-align:top; }
+.info-table tr:last-child td { border-bottom:none; }
+.info-table tr:hover td { background:rgba(250,247,242,.5); }
+.info-table td .zh { font-size:10.5px; }
+
+/* ── CHECKLIST ───────────────────────────────────── */
+.checklist { list-style:none; margin:10px 0; }
+.checklist li {
+  display:flex; align-items:flex-start; gap:10px;
+  padding:10px 0; border-bottom:1px solid var(--mist); cursor:pointer;
+}
+.checklist li:last-child { border-bottom:none; }
+.chk-box {
+  width:17px; height:17px; border:1.5px solid var(--mist);
+  border-radius:4px; flex-shrink:0; margin-top:2px;
+  transition:all .2s; display:flex; align-items:center; justify-content:center;
+}
+.checklist li.checked .chk-box { background:var(--sage); border-color:var(--sage); }
+.checklist li.checked .chk-box::after { content:'✓'; font-size:10px; color:#fff; font-weight:700; }
+.checklist li.checked .chk-content { opacity:.4; text-decoration:line-through; }
+.chk-content .en { font-size:13px; line-height:1.5; }
+.chk-content .zh { font-size:11px; }
+
+/* ── APP GRID ────────────────────────────────────── */
+.app-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px; margin:14px 0; }
+.app-card {
+  background:#fff; border:1px solid var(--mist);
+  border-radius:14px; padding:15px; transition:all .2s;
+}
+.app-card:hover { border-color:var(--blush); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.06); }
+.app-emoji { font-size:26px; margin-bottom:7px; }
+.app-name { font-weight:500; font-size:14px; line-height:1.3; }
+.app-name .zh { display:block; font-size:10px; }
+.app-desc { font-size:12px; color:rgba(26,20,16,.65); line-height:1.65; margin-top:6px; }
+.app-desc .zh { font-size:10.5px; }
+.app-when { font-size:11px; color:var(--warm); margin-top:7px; font-weight:500; }
+.app-when .zh { display:inline; font-size:10px; }
+
+/* ── NIGHT STRIP ─────────────────────────────────── */
+.night-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:13px 0; }
+.night-card { border-radius:12px; padding:13px; text-align:center; color:#fff; }
+.night-card .n-day { font-size:9px; letter-spacing:.15em; text-transform:uppercase; opacity:.65; margin-bottom:4px; }
+.night-card .n-en { font-size:12px; font-weight:500; line-height:1.4; }
+.night-card .n-zh { font-size:10px; opacity:.6; font-style:italic; font-family:'Cormorant Garamond',serif; line-height:1.4; margin-top:2px; }
+
+/* ── TIPS GRID ───────────────────────────────────── */
+.tips-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(265px,1fr)); gap:13px; margin:13px 0; }
+.tip-card { background:#fff; border-radius:13px; padding:17px; border:1px solid var(--mist); }
+.tip-card h4 { font-size:13px; font-weight:500; margin-bottom:10px; display:flex; align-items:center; gap:7px; }
+.tip-item { padding:6px 0; border-bottom:1px solid var(--mist); font-size:12.5px; line-height:1.55; padding-left:12px; position:relative; }
+.tip-item:last-child { border-bottom:none; }
+.tip-item::before { content:'·'; position:absolute; left:0; color:var(--warm); }
+.tip-item .zh { font-size:10.5px; }
+
+/* ── MAP ─────────────────────────────────────────── */
+.map-svg { width:100%; max-width:700px; display:block; margin:0 auto; }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:600px){
+  .night-strip { grid-template-columns:repeat(2,1fr); }
+  .day-num { font-size:46px; }
+  .day-title { font-size:24px; }
+  nav { height:auto; padding:8px 12px; }
+}
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Logan & Sarah · Jeju Island Journey</div>
+  <div class="hero-title"><em>Jeju</em> Island</div>
+  <div class="hero-sub">4 Days · 3 Nights · Together</div>
+  <div class="hero-date">May 3 – 6, 2025</div>
+  <div class="hero-scroll" onclick="document.querySelector('nav').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</div>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <button class="nav-btn active" data-tab="day1" onclick="showTab('day1')">Day 1 · Arrival</button>
+  <button class="nav-btn"        data-tab="day2" onclick="showTab('day2')">Day 2 · East Coast</button>
+  <button class="nav-btn"        data-tab="day3" onclick="showTab('day3')">Day 3 · Southwest</button>
+  <button class="nav-btn"        data-tab="day4" onclick="showTab('day4')">Day 4 · Farewell</button>
+  <button class="nav-btn"        data-tab="map"  onclick="showTab('map')">Map 地图</button>
+  <button class="nav-btn"        data-tab="app"  onclick="showTab('app')">Apps</button>
+  <button class="nav-btn"        data-tab="tips" onclick="showTab('tips')">Tips 须知</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     DAY 1
+═══════════════════════════════════════════════════ -->
+<div id="day1" class="section active">
+  <div class="day-header">
+    <div class="day-num" style="color:#f0e8e0">01</div>
+    <div class="day-info">
+      <div class="day-title">
+        <em>Arrival</em> · Jeju City Stroll
+        <span class="sub-zh">抵达 · 济州城漫步</span>
+      </div>
+      <div class="day-sub">Saturday, May 3 · ZH641</div>
+      <div class="day-accent" style="background:var(--day1)"></div>
+    </div>
+  </div>
+
+  <div class="seat-box">
+    <div class="seat-icon">✈️</div>
+    <div class="seat-text">
+      <h4>Seat Tip — Choose Seat F on both flights
+        <span class="zh">选座建议：两程均选 F 座（右侧窗口）</span>
+      </h4>
+      <p>ZH641 Shenzhen 08:45 → Jeju 12:14 · Seat F (right window) faces the Taiwan Strait — on clear days you may glimpse Taiwan's outline; on descent, Hallasan's silhouette frames the coast.
+        <span class="zh">右侧窗口可望台湾海峡，降落时可见汉拿山轮廓</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="sec-title">Timeline <span class="zh-label">时间轴</span></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">08:45</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>ZH641</strong> departs Shenzhen Bao'an Airport
+          <span class="zh">深圳宝安起飞 · 飞行约3.5小时</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">~3.5 hr flight</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:14</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Land at Jeju Airport · allow ~45 min for immigration & baggage
+          <span class="zh">落地 · 过海关+取行李约45分钟</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-warn">⚠ May holiday crowds — allow extra time <span class="zh">五一后人多，预留足</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Exit airport → Kakao T taxi to Asia Hotel
+          <span class="zh">出机场，打车前往酒店</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi 10 min · ¥15</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Check in — Asia Hotel</strong> · settle in, freshen up
+          <span class="zh">入住 Asia Hotel · 安顿行李，换装</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">60 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">15:00</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Yongduam Rock</strong> (Dragon Head Rock)
+          <span class="zh">龙头岩 · 传说中汉拿山神龙化石 · 下午3–5点光线最佳</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Legendary basalt formation — a dragon from Hallasan said to have turned to stone. Best light 3–5 pm; fully visible at low tide.</div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">45 min</span>
+          <span class="tag tag-tx">🚕 Taxi 8 min · ¥12</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">15:53</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Iho Twin Horse Lighthouses</strong>
+          <span class="zh">梨湖双马灯塔 · 红白双塔 · 傍晚渔船归港</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Red & white twin towers. Fishing boats drift home at dusk with Hallasan as the backdrop — a classic couple photo spot.</div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">45 min</span>
+          <span class="tag tag-tx">🚕 Taxi 10 min · ¥18</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">17:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Back to city · <strong>Nuwemaru Street</strong> stroll & window shopping
+          <span class="zh">宝健路 / 神话步行街 · 逛街买零食</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">60 min</span>
+          <span class="tag tag-tx">🚕 Taxi 10 min · ¥18</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:15</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main">🍽️ <strong>Dinner — Donsadon</strong> Black Pork BBQ
+          <span class="zh">晚餐 · 黑猪烤肉 · GD等明星常去 · 有专人帮烤 · 人均约₩30,000</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Celebrity favourite — staff grills at your table. ~₩30,000/person.</div>
+        <div class="tl-meta">
+          <span class="tag tag-food">90 min</span>
+          <span class="tag tag-tip">💡 Book via Catch Table app <span class="zh">提前预约</span></span>
+          <span class="tag tag-tx">Walk 5 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">19:50</div>
+      <div class="tl-dot accent"></div>
+      <div class="tl-content">
+        <div class="tl-main">🛍️ <strong>Lotte Duty Free</strong> — scout prices & brands tonight; main shopping at Shilla on Day 2
+          <span class="zh">乐天免税店踩点 · 今晚只了解品类，正式购物留Day 2新罗</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-shop">60 min · Open until 21:00</span>
+          <span class="tag tag-tx">Walk 5 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">21:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Walk back to hotel · rest up
+          <span class="zh">步行回酒店休息</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-title">Hotel Vicinity <span class="zh-label">酒店周边</span></div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🏨</div>
+      <div class="card-title">Asia Hotel Jeju</div>
+      <div class="card-sub">New Jeju · Yeon-dong Core · 新济州连洞</div>
+      <div class="card-body">Prime New Jeju location · 2.8 km from airport · 5-min walk to Shilla Duty Free · CU/7-11 downstairs · Olive Young nearby
+        <span class="zh">距机场2.8km · 新罗免税店步行5分钟 · 楼下便利店 · Olive Young步行可达</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🛍️</div>
+      <div class="card-title">Duty-Free Duo</div>
+      <div class="card-sub">Shilla + Lotte · 新罗 + 乐天</div>
+      <div class="card-body">Shilla: 5-min walk — Day 2 main shopping<br>Lotte: 8-min walk — Day 1 scouting<br>Open until ~20:30 — confirm before going
+        <span class="zh">新罗：Day 2正式购物 · 乐天：Day 1踩点 · 营业约至20:30</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🍜</div>
+      <div class="card-title">Ollae Guksu</div>
+      <div class="card-sub">Late-night pork noodles · 猪肉汤面宵夜</div>
+      <div class="card-body">1.2 km from hotel · Jeju's go-to pork noodle institution · ₩9,000/bowl · perfect late-night option
+        <span class="zh">距酒店1.2km · 济州猪肉汤面老字号 · ₩9,000/碗</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     DAY 2
+═══════════════════════════════════════════════════ -->
+<div id="day2" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#e0eaf0">02</div>
+    <div class="day-info">
+      <div class="day-title">
+        <em>East Coast</em> · Udo Island Day Tour
+        <span class="sub-zh">东线 · 牛岛一日游（酒店附赠）</span>
+      </div>
+      <div class="day-sub">Sunday, May 4 · Hotel-included Tour</div>
+      <div class="day-accent" style="background:var(--day2)"></div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Hotel-included day tour</strong> <span class="zh">酒店附赠一日游</span><br>
+    No transport to arrange · pay balance on the bus · covers Udo Island, Seongsan, Seopjikoji & Woljeongni
+    <span class="zh" style="display:block;margin-top:3px">无需安排车辆 · 上车补余款即可 · 全程涵盖牛岛、城山日出峰、涉地可支、月汀里</span>
+  </div>
+
+  <div class="sec-title">Timeline <span class="zh-label">时间轴</span></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">08:30</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Meet at hotel entrance</strong> · board the tour van
+          <span class="zh">酒店门口集合，上商务包车</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-warn">⚠ Pay ¥100 balance + ¥160/person island fee on board <span class="zh">上车补余款¥100 + 上岛费¥160/人</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Seongsan Pier · group tickets arranged by guide
+          <span class="zh">城山码头，统一安排购票上岛</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">Ferry ~20 min <span class="zh">渡轮约20分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">10:20</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🏝️ <strong>Udo Island</strong> — free exploration
+          <span class="zh">牛岛 · 自由游览</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Joseon scholar Kim Nam-sa documented the island's "8 Scenic Views" in 1697. The white coral-fragment beach is Korea's only one of its kind (Natural Monument No. 438). Must-try: peanut ice cream at Jimini Cafe or Blancrocher.
+          <span class="zh" style="display:block">1697年文人金南仕留下"牛岛八景"记录 · 白色珊瑚沙滩是韩国唯一的珊瑚碎屑沙滩（天然纪念物第438号）· 花生冰淇淋必吃</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">90 min</span>
+          <span class="tag tag-tip">💡 Peanut ice cream — must try <span class="zh">花生冰淇淋必吃</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:50</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🍽️ <strong>Lunch on the island</strong> · Haenyeo conch noodles
+          <span class="zh">岛上午餐 · 海女海螺拌面</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-food">60 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:10</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Ferry back to Seongsan Pier
+          <span class="zh">渡轮返回城山码头</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">Ferry 20 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:15</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Seongsan Ilchulbong</strong> (Sunrise Peak) · UNESCO World Natural Heritage
+          <span class="zh">城山日出峰 · UNESCO世界自然遗产</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Formed ~5,000 years ago by an undersea eruption. 99 basalt rocks crown the crater rim like a giant crown. Stunning even without summiting.
+          <span class="zh" style="display:block">约5,000年前海底火山喷发形成 · 99块尖石环绕火山口如皇冠 · 不登顶在山脚拍照也非常出片</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">60 min (no summit) <span class="zh">不登顶</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">—</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content" style="border-style:dashed">
+        <div class="opt-title">Optional: Summit (+50 min) <span style="font-size:11px;color:rgba(184,146,74,.7);font-family:'Cormorant Garamond',serif"> — 可选登顶</span></div>
+        <div class="tl-main" style="font-size:12.5px">Fit hikers reach the top in ~30 min; leisurely pace ~50 min round trip · ₩5,000/person · 360° crater panorama. If you summit, Seopjikoji time reduces accordingly.
+          <span class="zh" style="display:block">体力好约30分钟登顶，一般体力50分钟来回 · ₩5,000/人 · 360°火山口全景 · 若登顶则涉地可支时间相应缩短</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">14:35</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Seopjikoji</strong>
+          <span class="zh">涉地可支</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Filming location of Korean drama "All In" (2003, Lee Byung-hun). Dramatic basalt coastline + the iconic Glass House chapel.
+          <span class="zh" style="display:block">韩剧《All In》（2003）拍摄地 · 玄武岩海岸 + Glass House教堂</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">60 min</span>
+          <span class="tag tag-tx">Tour van ~20 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">15:55</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Woljeongni Beach</strong>
+          <span class="zh">月汀里海滩 · "月光停驻之地"</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">"Where moonlight rests" — Jeju's most artistic beach, white sand meets turquoise shallow water.
+          <span class="zh" style="display:block">济州最文艺海滩 · 白沙 + 蓝绿浅海</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">60 min</span>
+          <span class="tag tag-tx">Tour van ~20 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:00</div>
+      <div class="tl-dot accent" style="background:var(--day2)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🛍️ <strong>Shilla Duty Free</strong> — main shopping session
+          <span class="zh">新罗免税店 · 正式购物 · 主力扫货 · 提前列好清单</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-shop">120 min · Open to ~20:30</span>
+          <span class="tag tag-warn">⚠ Confirm opening hours before going <span class="zh">出发前确认营业时间</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">20:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Walk back to hotel (5 min)
+          <span class="zh">步行回酒店</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-title">Today's Costs <span class="zh-label">今日费用（两人）</span></div>
+  <div class="cost-box">
+    <div class="cost-title">Cash to Prepare — 2 Pax · 建议备现金（两人）</div>
+    <div class="cost-row"><span class="lbl">Udo island fee — ferry + car / 2 pax<span class="zh">牛岛上岛费（船票+车辆）/ 2人</span></span><span class="amt">¥320</span></div>
+    <div class="cost-row"><span class="lbl">Seongsan summit ticket (optional) / 2 pax<span class="zh">城山登顶门票（可不登）/ 2人</span></span><span class="amt">¥50</span></div>
+    <div class="cost-row"><span class="lbl">Speed boat (optional) / 2 pax<span class="zh">快艇（自愿）/ 2人</span></span><span class="amt">~¥250</span></div>
+    <div class="cost-row"><span class="lbl">Lunch + other food / 2 pax<span class="zh">午餐 + 其他餐饮</span></span><span class="amt">¥150–200</span></div>
+    <div class="cost-total"><span class="lbl">Recommended cash<span class="zh">建议备现金</span></span><span class="amt">¥800</span></div>
+  </div>
+
+  <div class="warn-box">
+    <strong>⚠ Important Rules</strong> <span class="zh">重要规则</span>
+    <ul style="margin-top:8px;padding-left:16px;font-size:12.5px;line-height:2.1">
+      <li>Cancel at least 2 days ahead — same/next day is non-refundable <span class="zh" style="display:inline">提前2天通知才能取消，前一天/当天不可取消</span></li>
+      <li>Not suitable for children under 2 or pregnant women <span class="zh" style="display:inline">2岁以下及孕妇不能参加</span></li>
+      <li>Luggage storage ¥30/bag — notify in advance <span class="zh" style="display:inline">行李寄存另收¥30/件，提前告知客服</span></li>
+      <li>Udo access depends on sea conditions; rain alone won't stop it <span class="zh" style="display:inline">牛岛能否上岛以当天风浪为准，下雨不影响</span></li>
+    </ul>
+  </div>
+
+  <div class="optional-box">
+    <div class="opt-title">☁️ Weather Backup — if Udo is inaccessible <span style="font-size:11px;color:rgba(184,146,74,.7);font-family:'Cormorant Garamond',serif">天气备选方案</span></div>
+    Jeju Aquarium (~¥215/person, show included) + London Bagel café + dog café · East coast sights (Seongsan, Seopjikoji, Woljeongni) continue as planned.
+    <span class="zh" style="display:block;margin-top:3px">改为济州海洋馆（₩44,600/人约¥215含演出）+ 伦敦贝果 + 小狗咖啡店 · 城山/涉地可支/月汀里继续正常</span>
+  </div>
+
+  <div class="sec-title">Shopping Strategy <span class="zh-label">购物策略</span></div>
+  <table class="info-table">
+    <thead><tr><th>When</th><th>Where</th><th>How</th></tr></thead>
+    <tbody>
+      <tr><td>Day 1 evening<span class="zh">Day 1 晚</span></td><td>Lotte Duty Free<span class="zh">乐天免税店</span></td><td>Scout only — compare prices, hold off buying<span class="zh">踩点，了解品类价格，少买/不买</span></td></tr>
+      <tr><td>Day 2 evening<span class="zh">Day 2 晚</span></td><td>Shilla Duty Free<span class="zh">新罗免税店</span></td><td>Main purchase — bring a checklist<span class="zh">主力扫货，提前列清单</span></td></tr>
+      <tr><td>Day 4 morning<span class="zh">Day 4 早</span></td><td>Dongmun Market<span class="zh">东门传统市场</span></td><td>Souvenirs: tangerine choc, red ginseng, mochi<span class="zh">伴手礼：橘子巧克力、红参、橘子大福</span></td></tr>
+      <tr><td>Day 4 airport<span class="zh">Day 4 机场</span></td><td>Departure Duty Free<span class="zh">出发层免税区</span></td><td>Last chance: alcohol, cosmetics, snacks<span class="zh">最后补漏：酒类/化妆品/零食</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11.5px;color:rgba(26,20,16,.42);margin-top:6px">Duty-free limit: USD 800/person · USD 1,600 combined · declare any excess <span class="zh" style="display:inline;font-size:10px">免税额度USD 800/人，两人合计USD 1,600</span></p>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     DAY 3
+═══════════════════════════════════════════════════ -->
+<div id="day3" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#e0ece2">03</div>
+    <div class="day-info">
+      <div class="day-title">
+        <em>Southwest</em> · Tea · Coast · Sunset
+        <span class="sub-zh">西南线 · 茶园 · 海岸 · 日落</span>
+      </div>
+      <div class="day-sub">Monday, May 5 · Self-guided · Taxi + Bus 202</div>
+      <div class="day-accent" style="background:var(--day3)"></div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Transport rule: taxi for long legs, Bus 202 for short hops</strong> <span class="zh">远程打车，近程坐202路公交</span><br>
+    Bus 202 runs every 15–20 min along the west/southwest coast and covers most sights on this route.
+    <span class="zh" style="display:block;margin-top:2px">202路班次约15–20分钟一班，沿西/西南海岸直达各大景点</span>
+  </div>
+
+  <div class="sec-title">Timeline <span class="zh-label">时间轴</span></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">08:30</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main">Depart hotel → O'sulloc Tea Museum
+          <span class="zh">酒店出发 → O'sulloc 雪绿茶博物馆</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi ~40 min · ¥80 <span class="zh">打车约40分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:10</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>O'sulloc Tea Museum</strong>
+          <span class="zh">雪绿茶博物馆</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Korea's iconic tea destination. Rolling green tea fields, matcha latte + matcha roll cake. Free entry; pay only for drinks. Morning light is the softest of the day — prime photo time.
+          <span class="zh" style="display:block">韩国茶文化代表地 · 广阔绿色茶园 · 抹茶拿铁+抹茶瑞士卷 · 门票免费 · 早晨光线最柔和，出片率极高</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">90 min</span>
+          <span class="tag tag-tip">💡 Best light of the day — prime photos <span class="zh">早晨光线最好</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">10:40</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Head to Yongmeori Coast
+          <span class="zh">前往龙头海岸</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi ~20 min · ¥40 <span class="zh">打车约20分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:00</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Yongmeori Coast</strong> · Sanbangsan backdrop
+          <span class="zh">龙头海岸 · 山房山背景</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Millennia of wave-sculpted layered sandstone cliffs. Walk the flat coastal path at low tide; haenyeo divers sell fresh conch & sea cucumber right on the rocks.
+          <span class="zh" style="display:block">数千年海浪雕刻的层状砂岩悬崖 · 退潮时可沿海岸步道平走 · 海女在此售卖新鲜海螺和海参</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">60 min</span>
+          <span class="tag tag-warn">⚠ Check low tide on Naver Map before heading out <span class="zh">出发前查当天退潮时间</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Head to Jungmun Tourist Complex
+          <span class="zh">前往中文观光区</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚌 Bus 202 ~10 min · ¥5 <span class="zh">202路公交约10分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:15</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🍽️ <strong>Lunch — Gozip Dol Wooluck</strong> · grilled tilefish set
+          <span class="zh">午餐 · 烤方头鱼套餐 · 济州名贵海鲜</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-food">90 min</span>
+          <span class="tag tag-opt">Alt: Jeju Osung — braised hairtail fish <span class="zh">备选：Jeju Osung 炖带鱼老字号</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:45</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Daepo Jusangjeolli Cliff</strong>
+          <span class="zh">大浦柱状节理带</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Giant hexagonal basalt columns formed where lava met seawater. Flat boardwalk along the coast — zero effort required, maximum visual impact.
+          <span class="zh" style="display:block">火山熔岩遇海水冷却形成的六角形玄武岩柱群 · 平地步道沿海岸走，完全不费体力</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">60 min</span>
+          <span class="tag tag-tx">Walk 10 min from restaurant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">15:00</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Jungmun Saekdal Beach</strong> · clifftop walk + ocean-view café
+          <span class="zh">中文穑达海滩 · 悬崖步道 + 海景咖啡</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">May afternoon light is golden here — the best couple photo spot of the trip. Clifftop walking path + multiple ocean-view cafés to settle into.
+          <span class="zh" style="display:block">5月下午光线最好 · 情侣照黄金时段 · 悬崖步道 + 多家海景咖啡馆</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">150 min</span>
+          <span class="tag tag-tx">Walk 5 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">17:35</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Head to Aewol
+          <span class="zh">前往涯月邑</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi ~35 min · ¥70 <span class="zh">打车约35分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">18:10</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Aewol seaside stroll
+          <span class="zh">涯月邑海边散步</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">50 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">19:00</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🌅 <strong>Aewol The Sunset</strong> · all-glass ocean-view café
+          <span class="zh">全玻璃海景咖啡馆 · 5月日落约19:30–19:45</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">May sunset ~19:30–19:45. Arrive by 19:00 to secure the best window seat. Book in advance via Catch Table.
+          <span class="zh" style="display:block">5月日落约19:30–19:45 · 19:00前到场 · 提前用Catch Table预约靠窗位</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-food">90 min</span>
+          <span class="tag tag-warn">⚠ Reservation required — Catch Table app <span class="zh">必须提前预约</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">20:30</div>
+      <div class="tl-dot accent" style="background:var(--day3)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🍽️ Light dinner in Aewol
+          <span class="zh">涯月邑轻食晚餐 · 午餐已丰盛，晚餐选轻食</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Lunch was a feast — keep dinner light. The stone-walled lanes of Aewol hide many charming little spots.
+          <span class="zh" style="display:block">涯月邑石墙小巷里有很多有氛围的小店</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-food">60 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">21:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Taxi back to hotel
+          <span class="zh">打车回酒店</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 ~30 min · ¥65</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-title">Today's Budget <span class="zh-label">今日费用（两人）</span></div>
+  <div class="cost-box">
+    <div class="cost-title">Full Day Budget — 2 Pax · 两人全天预算</div>
+    <div class="cost-row"><span class="lbl">Taxi total<span class="zh">打车合计</span></span><span class="amt">¥255</span></div>
+    <div class="cost-row"><span class="lbl">Bus 202<span class="zh">202路公交</span></span><span class="amt">¥5</span></div>
+    <div class="cost-row"><span class="lbl">O'sulloc drinks & snacks<span class="zh">O'sulloc消费</span></span><span class="amt">¥100–150</span></div>
+    <div class="cost-row"><span class="lbl">Haenyeo seafood at the coast<span class="zh">龙头海岸海女海螺</span></span><span class="amt">¥30–50</span></div>
+    <div class="cost-row"><span class="lbl">Lunch — tilefish set<span class="zh">午餐（方头鱼套餐）</span></span><span class="amt">¥150–200</span></div>
+    <div class="cost-row"><span class="lbl">Jusangjeolli entry<span class="zh">柱状节理带门票</span></span><span class="amt">¥50</span></div>
+    <div class="cost-row"><span class="lbl">Afternoon café<span class="zh">下午咖啡</span></span><span class="amt">¥80–100</span></div>
+    <div class="cost-row"><span class="lbl">Aewol The Sunset<span class="zh">日落咖啡馆</span></span><span class="amt">¥100–150</span></div>
+    <div class="cost-row"><span class="lbl">Light dinner<span class="zh">轻食晚餐</span></span><span class="amt">¥80–100</span></div>
+    <div class="cost-total"><span class="lbl">Total estimate<span class="zh">全天合计</span></span><span class="amt">¥850–1,060</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     DAY 4
+═══════════════════════════════════════════════════ -->
+<div id="day4" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#ede8f5">04</div>
+    <div class="day-info">
+      <div class="day-title">
+        <em>Farewell</em> · Dongmun Market · Home
+        <span class="sub-zh">告别 · 东门市场 · 回深圳</span>
+      </div>
+      <div class="day-sub">Tuesday, May 6 · ZH642 14:00</div>
+      <div class="day-accent" style="background:var(--day4)"></div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <strong>Hard deadlines — work backwards from 14:00 takeoff</strong> <span class="zh">返程硬约束</span><br>
+    14:00 takeoff → at airport by 11:30 → check out 11:00 → <strong>leave Dongmun by 10:15</strong>
+    <span class="zh" style="display:block;margin-top:2px">14:00起飞 → 11:30最晚到机场 → 11:00退房 → 10:15必须离开东门市场</span>
+  </div>
+
+  <div class="seat-box" style="background:linear-gradient(135deg,#1a2d1a,#1a2d3d)">
+    <div class="seat-icon">✈️</div>
+    <div class="seat-text">
+      <h4>Return flight — Seat F (right window)
+        <span class="zh">返程选座 · F座（右侧窗口）</span>
+      </h4>
+      <p>ZH642 Jeju 14:00 → Shenzhen 16:06 · Seat F offers Pearl River Delta city views on descent and avoids afternoon sun glare.
+        <span class="zh">下午F座（右侧）可看珠三角城市群，同时避开西晒阳光</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="sec-title">Timeline <span class="zh-label">时间轴</span></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-time">06:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Wake up · pack bags
+          <span class="zh">起床，整理行李打包</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Convenience store breakfast downstairs — triangle kimbap + hot latte
+          <span class="zh">楼下便利店早餐 · 三角饭团 + 热拿铁</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">15 min · ~¥15</span>
+          <span class="tag tag-tip">Keep it quick — save time for the market <span class="zh">快速解决，省时间给市场</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:15</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Head to Dongmun Traditional Market
+          <span class="zh">出发 → 东门传统市场</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi ~10 min · ¥15</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:25</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>Dongmun Traditional Market</strong> — Est. 1945 · weekday opening: 07:00 ✅
+          <span class="zh">东门传统市场 · 1945年创立 · 周二工作日07:00开门</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">Total 150 min <span class="zh">共150分钟</span></span>
+          <span class="tag tag-warn">⚠ Mostly cash only — have Korean won ready <span class="zh">大部分摊位只收现金，提前备好韩元</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">07:25</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Gates 4 & 5 · seafood zone — freshest stock, fewest people
+          <span class="zh">4/5号门 海鲜区 · 趁早最新鲜，人最少</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">45 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">08:10</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Gate 1 · souvenir zone — tangerine chocolate, red ginseng, rice cake gift boxes
+          <span class="zh">1号门 伴手礼区 · 橘子巧克力 + 红参 + 年糕礼盒</span>
+        </div>
+        <div class="tl-meta">
+          <span class="tag tag-dur">50 min</span>
+          <span class="tag tag-tip">💡 ~20% cheaper than airport/duty-free <span class="zh">比机场便宜约20%</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:00</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🍊 <strong>Tangerine Grandpa</strong> · fresh-squeezed juice + tangerine mochi
+          <span class="zh">橘子爷爷 · 鲜榨橘子汁 + 橘子大福 · 现做现吃</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-food">40 min (incl. queue) <span class="zh">含排队</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">09:40</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Free browsing · check baggage weight
+          <span class="zh">自由补购 · 清点行李重量</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">35 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">10:15</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">⏱️ Leave market → taxi to hotel for bags
+          <span class="zh">离开市场 → 打车回酒店取行李</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi 10 min · ¥15</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">10:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Collect luggage · check out
+          <span class="zh">取行李 · 办理退房</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">30 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:00</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main">✅ Checked out · head to airport
+          <span class="zh">退房完成 · 出发机场</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-tx">🚕 Taxi ~10 min · ¥15</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:15</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main">Arrive Jeju Airport · find Shenzhen Airlines (ZH) check-in counter
+          <span class="zh">到达济州机场 · 找深航（ZH）值机柜台</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">Check-in + bag drop · 30 min <span class="zh">值机+托运30分钟</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">11:45</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Security check · enter departure zone
+          <span class="zh">过安检 · 进出发区</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-dur">20 min</span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">12:05</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main">🛍️ Departure duty-free — last chance shopping
+          <span class="zh">出发层免税区最后扫货</span>
+        </div>
+        <div class="tl-main" style="font-size:12px;margin-top:4px;color:rgba(26,20,16,.55)">Cosmetics · alcohol · Orion snacks · dried seaweed
+          <span class="zh" style="display:inline"> · 化妆品 · 酒类 · 好丽友零食 · 海苔</span>
+        </div>
+        <div class="tl-meta"><span class="tag tag-shop">85 min · USD 800/person limit <span class="zh">免税额度USD 800/人</span></span></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">13:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-main">Head to gate
+          <span class="zh">前往登机口候机</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-time">14:00</div>
+      <div class="tl-dot accent" style="background:var(--day4)"></div>
+      <div class="tl-content">
+        <div class="tl-main"><strong>ZH642</strong> departs Jeju → lands Shenzhen Bao'an 16:06
+          <span class="zh">济州起飞 → 深圳宝安16:06落地</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-title">Dongmun Market Checklist <span class="zh-label">购物清单（可勾选）</span></div>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Tangerine mochi — freshly made, expect a queue</div><div class="zh">橘子大福（现做麻薯，排队必买）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🥩 Charcoal-grilled black pork skewer — eat while walking</div><div class="zh">炭烤黑猪肉串（边走边吃）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Fresh-squeezed tangerine juice — ~¥15/cup</div><div class="zh">鲜榨橘子汁（橘子爷爷，约¥15/杯）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍫 Tangerine chocolate gift boxes — ~20% cheaper than airport</div><div class="zh">橘子巧克力礼盒（比机场/免税店便宜约20%）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🌿 Red ginseng products — better value than Seoul</div><div class="zh">红参产品（性价比高于首尔）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍑 Hallabong tangerines (fresh) — heavy, watch baggage weight</div><div class="zh">汉拿峰橘子鲜果（重，注意行李重量）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🪨 Amethyst ornaments — Jeju specialty</div><div class="zh">紫水晶摆件（济州特产）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🎁 Tangerine rice cake gift set</div><div class="zh">橘子年糕礼盒</div></div></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MAP
+═══════════════════════════════════════════════════ -->
+<div id="map" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#e8e4de;font-size:46px">Map</div>
+    <div class="day-info">
+      <div class="day-title"><em>Routes</em> · 4-Day Overview <span class="sub-zh">路线 · 地图总览</span></div>
+      <div class="day-sub">Jeju Island · All 4 Days</div>
+      <div class="day-accent" style="background:var(--ink)"></div>
+    </div>
+  </div>
+
+  <svg class="map-svg" viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+    <defs><filter id="sh"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.12"/></filter></defs>
+    <path d="M100 200 C110 155 140 130 180 120 C220 110 270 105 320 108 C380 112 430 110 470 118 C510 126 540 140 560 160 C575 175 580 195 575 215 C565 240 545 255 510 262 C470 270 420 272 370 270 C320 268 270 265 230 260 C185 254 150 245 125 230 C108 220 98 212 100 200Z" fill="#e8f4e8" stroke="#c8dcc8" stroke-width="1.5" filter="url(#sh)"/>
+    <path d="M285 148 C380 130 460 140 510 158" stroke="var(--day2)" stroke-width="2" fill="none" stroke-dasharray="5,3" opacity=".7"/>
+    <path d="M510 158 C540 145 560 140 575 142" stroke="var(--day2)" stroke-width="1.5" fill="none" stroke-dasharray="3,3" opacity=".6"/>
+    <path d="M285 148 C220 165 170 195 155 220 C148 235 155 250 175 255 C210 255 240 245 270 250" stroke="var(--day3)" stroke-width="2" fill="none" stroke-dasharray="5,3" opacity=".7"/>
+    <path d="M285 148 C260 145 245 143 235 143" stroke="var(--day4)" stroke-width="2" fill="none" opacity=".6"/>
+    <!-- Airport -->
+    <circle cx="228" cy="143" r="7" fill="#fff" stroke="#999" stroke-width="1.5"/>
+    <text x="228" y="147" text-anchor="middle" font-size="8" fill="#666">✈</text>
+    <text x="228" y="135" text-anchor="middle" font-size="8" fill="#777" font-family="sans-serif">Airport</text>
+    <!-- Hotel -->
+    <circle cx="285" cy="148" r="8" fill="var(--warm)" stroke="#fff" stroke-width="2"/>
+    <text x="285" y="152" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold" font-family="sans-serif">H</text>
+    <text x="285" y="139" text-anchor="middle" font-size="8.5" fill="var(--ink)" font-family="sans-serif">Hotel</text>
+    <!-- Day 1 -->
+    <circle cx="268" cy="155" r="5" fill="var(--day1)" stroke="#fff" stroke-width="1.5"/>
+    <text x="254" y="168" text-anchor="middle" font-size="8" fill="var(--day1)" font-family="sans-serif">Dragon Rock</text>
+    <circle cx="270" cy="143" r="5" fill="var(--day1)" stroke="#fff" stroke-width="1.5"/>
+    <text x="256" y="136" text-anchor="middle" font-size="8" fill="var(--day1)" font-family="sans-serif">Iho Lighthouse</text>
+    <!-- Day 2 -->
+    <circle cx="510" cy="158" r="6" fill="var(--day2)" stroke="#fff" stroke-width="1.5"/>
+    <text x="510" y="149" text-anchor="middle" font-size="8" fill="var(--day2)" font-family="sans-serif">Seongsan</text>
+    <circle cx="575" cy="143" r="5" fill="var(--day2)" stroke="#fff" stroke-width="1.5"/>
+    <text x="575" y="133" text-anchor="middle" font-size="8" fill="var(--day2)" font-family="sans-serif">Udo Island</text>
+    <circle cx="526" cy="176" r="5" fill="var(--day2)" stroke="#fff" stroke-width="1.5"/>
+    <text x="536" y="188" text-anchor="middle" font-size="7.5" fill="var(--day2)" font-family="sans-serif">Seopjikoji</text>
+    <circle cx="468" cy="143" r="5" fill="var(--day2)" stroke="#fff" stroke-width="1.5"/>
+    <text x="468" y="133" text-anchor="middle" font-size="7.5" fill="var(--day2)" font-family="sans-serif">Woljeongni</text>
+    <!-- Day 3 -->
+    <circle cx="190" cy="172" r="5" fill="var(--day3)" stroke="#fff" stroke-width="1.5"/>
+    <text x="185" y="162" text-anchor="middle" font-size="8" fill="var(--day3)" font-family="sans-serif">O'sulloc</text>
+    <circle cx="158" cy="216" r="5" fill="var(--day3)" stroke="#fff" stroke-width="1.5"/>
+    <text x="143" y="208" text-anchor="middle" font-size="7.5" fill="var(--day3)" font-family="sans-serif">Yongmeori</text>
+    <circle cx="197" cy="244" r="5" fill="var(--day3)" stroke="#fff" stroke-width="1.5"/>
+    <text x="208" y="257" text-anchor="middle" font-size="7.5" fill="var(--day3)" font-family="sans-serif">Jusangjeolli</text>
+    <circle cx="228" cy="248" r="5" fill="var(--day3)" stroke="#fff" stroke-width="1.5"/>
+    <text x="244" y="262" text-anchor="middle" font-size="7.5" fill="var(--day3)" font-family="sans-serif">Jungmun Beach</text>
+    <circle cx="258" cy="147" r="5" fill="var(--day3)" stroke="#fff" stroke-width="1.5"/>
+    <text x="244" y="153" text-anchor="middle" font-size="8" fill="var(--day3)" font-family="sans-serif">Aewol</text>
+    <!-- Legend -->
+    <rect x="28" y="292" width="12" height="3" rx="1.5" fill="var(--day1)"/>
+    <text x="46" y="298" font-size="9" fill="var(--day1)" font-family="sans-serif">Day 1 Arrival</text>
+    <rect x="28" y="310" width="12" height="3" rx="1.5" fill="var(--day2)"/>
+    <text x="46" y="316" font-size="9" fill="var(--day2)" font-family="sans-serif">Day 2 East Coast</text>
+    <rect x="165" y="292" width="12" height="3" rx="1.5" fill="var(--day3)"/>
+    <text x="183" y="298" font-size="9" fill="var(--day3)" font-family="sans-serif">Day 3 Southwest</text>
+    <rect x="165" y="310" width="12" height="3" rx="1.5" fill="var(--day4)"/>
+    <text x="183" y="316" font-size="9" fill="var(--day4)" font-family="sans-serif">Day 4 Farewell</text>
+    <line x1="580" y1="345" x2="650" y2="345" stroke="#aaa" stroke-width="1"/>
+    <line x1="580" y1="340" x2="580" y2="350" stroke="#aaa" stroke-width="1"/>
+    <line x1="650" y1="340" x2="650" y2="350" stroke="#aaa" stroke-width="1"/>
+    <text x="615" y="358" text-anchor="middle" font-size="8" fill="#aaa" font-family="sans-serif">~40 km</text>
+    <text x="650" y="295" font-size="14" fill="#999" font-family="sans-serif">N</text>
+    <line x1="656" y1="298" x2="656" y2="312" stroke="#999" stroke-width="1.5"/>
+    <polygon points="656,295 652,303 660,303" fill="#999"/>
+  </svg>
+
+  <div class="sec-title">Distance from Asia Hotel <span class="zh-label">距离矩阵</span></div>
+  <table class="info-table">
+    <thead><tr><th>Destination 目的地</th><th>Distance</th><th>Taxi Time</th><th>Est. Fare</th></tr></thead>
+    <tbody>
+      <tr><td>Jeju Airport <span class="zh">济州机场</span></td><td>2.8 km</td><td>10 min</td><td>¥15</td></tr>
+      <tr><td>Yongduam Rock <span class="zh">龙头岩</span></td><td>2 km</td><td>8 min</td><td>¥12</td></tr>
+      <tr><td>Dongmun Market <span class="zh">东门传统市场</span></td><td>3 km</td><td>10 min</td><td>¥15</td></tr>
+      <tr><td>O'sulloc Tea Museum <span class="zh">雪绿茶博物馆</span></td><td>35 km</td><td>40 min</td><td>¥80</td></tr>
+      <tr><td>Yongmeori Coast <span class="zh">龙头海岸</span></td><td>50 km</td><td>55 min</td><td>¥110</td></tr>
+      <tr><td>Jungmun / Jusangjeolli <span class="zh">中文观光区/柱状节理</span></td><td>35 km</td><td>40 min</td><td>¥80</td></tr>
+      <tr><td>Aewol <span class="zh">涯月邑</span></td><td>25 km</td><td>30 min</td><td>¥65</td></tr>
+      <tr><td>Seongsan Ilchulbong <span class="zh">城山日出峰</span></td><td>74 km</td><td>70 min</td><td>¥150+</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sec-title">Evening Plan — No Repeats <span class="zh-label">四天晚上安排</span></div>
+  <div class="night-strip">
+    <div class="night-card" style="background:var(--day1)">
+      <div class="n-day">Day 1 · Sat</div>
+      <div class="n-en">Nuwemaru St<br>Lotte DF Scout</div>
+      <div class="n-zh">宝健路逛街<br>乐天免税踩点</div>
+    </div>
+    <div class="night-card" style="background:var(--day2)">
+      <div class="n-day">Day 2 · Sun</div>
+      <div class="n-en">Shilla Duty Free<br>Main Shopping</div>
+      <div class="n-zh">新罗免税店<br>正式购物</div>
+    </div>
+    <div class="night-card" style="background:var(--day3)">
+      <div class="n-day">Day 3 · Mon</div>
+      <div class="n-en">Aewol Sunset Café<br>Light Dinner</div>
+      <div class="n-zh">涯月日落咖啡<br>轻食晚餐</div>
+    </div>
+    <div class="night-card" style="background:var(--day4)">
+      <div class="n-day">Day 4 · Tue</div>
+      <div class="n-en">14:00 Takeoff<br>No evening</div>
+      <div class="n-zh">14:00起飞<br>无晚上安排</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     APPS
+═══════════════════════════════════════════════════ -->
+<div id="app" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#e8e4de;font-size:46px">Apps</div>
+    <div class="day-info">
+      <div class="day-title"><em>Essential</em> App List <span class="sub-zh">必备 App 清单</span></div>
+      <div class="day-sub">Download before departure · 出发前下载</div>
+      <div class="day-accent" style="background:var(--ink)"></div>
+    </div>
+  </div>
+  <div class="app-grid">
+
+    <div class="app-card">
+      <div class="app-emoji">🗺️</div>
+      <div class="app-name">Naver Map <span class="zh">네이버지도</span></div>
+      <div class="app-desc">Korea's most accurate navigation — replaces Google Maps entirely. Walking, transit & driving covered. Essential for Bus 202 live schedules on Day 3.
+        <span class="zh">韩国最精准导航，替代Google Maps · 查202路实时班次必备</span>
+      </div>
+      <div class="app-when">📍 All days — essential on Day 3 <span class="zh">全程使用</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">🈯</div>
+      <div class="app-name">Papago <span class="zh">翻译神器</span></div>
+      <div class="app-desc">Far more accurate than Google Translate for Korean. Voice, text & camera (photo) translation — indispensable for reading menus.
+        <span class="zh">韩语翻译准确度远超Google · 支持菜单拍照翻译 · 点菜必备</span>
+      </div>
+      <div class="app-when">📍 Restaurants & menus <span class="zh">餐厅点菜/看菜单</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">🚕</div>
+      <div class="app-name">Kakao T <span class="zh">打车首选</span></div>
+      <div class="app-desc">Korea's Didi equivalent. Link an overseas credit card or pay cash on arrival. Primary taxi app for the entire Day 3 route.
+        <span class="zh">韩国版滴滴 · 绑定海外信用卡或下车付现金 · Day 3全程依赖</span>
+      </div>
+      <div class="app-when">📍 Days 1, 3 & 4 taxis <span class="zh">Day 1/3/4打车</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">🚖</div>
+      <div class="app-name">k.ride <span class="zh">打车备选</span></div>
+      <div class="app-desc">Designed for foreign tourists with built-in translation. Use when Kakao T can't find a driver.
+        <span class="zh">专为外国游客设计，自带翻译 · Kakao T叫不到车时的备用选项</span>
+      </div>
+      <div class="app-when">📍 Fallback taxi option <span class="zh">Kakao T备用</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">🍽️</div>
+      <div class="app-name">Catch Table <span class="zh">餐厅预约</span></div>
+      <div class="app-desc">Korean restaurant booking app with English support. Must use to reserve Donsadon (Day 1) and Aewol The Sunset (Day 3) before departure.
+        <span class="zh">韩国版"美味不用等" · Day 1 Donsadon 和 Day 3 Aewol The Sunset 必须提前预约</span>
+      </div>
+      <div class="app-when">📍 Book 2 restaurants before departure <span class="zh">出发前预约两家</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">💳</div>
+      <div class="app-name">WOWPASS / NAMANE <span class="zh">预付交通卡</span></div>
+      <div class="app-desc">Prepaid card that doubles as a T-Money transit card. Tap to board Bus 202 — no need to carry exact change.
+        <span class="zh">预付储值卡，可当T-Money使用 · 坐202路公交直接刷</span>
+      </div>
+      <div class="app-when">📍 Day 3 Bus 202 <span class="zh">Day 3坐202路</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">✈️</div>
+      <div class="app-name">Shenzhen Airlines <span class="zh">深航 App</span></div>
+      <div class="app-desc">For ZH641/ZH642 seat selection. International flights: online seat selection only, no web check-in. Hotline: 95361. Choose Seat F on both flights.
+        <span class="zh">国际航班只能网上选座，不能网上值机 · 客服95361 · 两程选F座</span>
+      </div>
+      <div class="app-when">📍 Select Seat F before departure <span class="zh">出发前选F座</span></div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-emoji">🌊</div>
+      <div class="app-name">Naver Tide Check <span class="zh">潮汐查询</span></div>
+      <div class="app-desc">Before Day 3's Yongmeori Coast, check low tide time on Naver (search "Sanbangsan tide" or "산방산 조석"). You need low tide to walk the coastal path.
+        <span class="zh">Day 3去龙头海岸前必查退潮时间 · 退潮才能沿岸步道平走</span>
+      </div>
+      <div class="app-when">📍 Check before Day 3 <span class="zh">Day 3出发前必查</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     TIPS
+═══════════════════════════════════════════════════ -->
+<div id="tips" class="section">
+  <div class="day-header">
+    <div class="day-num" style="color:#e8e4de;font-size:46px">!</div>
+    <div class="day-info">
+      <div class="day-title"><em>Travel Tips</em> · Need to Know <span class="sub-zh">注意事项 · 出行须知</span></div>
+      <div class="day-sub">Read before you go · 出发前必读</div>
+      <div class="day-accent" style="background:var(--ink)"></div>
+    </div>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <h4>🛂 Immigration 出入境</h4>
+      <div class="tip-item">Visa-free 30 days for Chinese passport holders <span class="zh">韩国对中国公民免签30天</span></div>
+      <div class="tip-item">e-Arrival Card: voluntary in 2025, not mandatory <span class="zh">e-Arrival Card：2025年自愿填写，非强制</span></div>
+      <div class="tip-item">Duty-free allowance: USD 800/person <span class="zh">入境免税额度：USD 800/人</span></div>
+      <div class="tip-item">Prohibited: fresh produce, meat, soil <span class="zh">禁带：新鲜蔬果、肉类、土壤</span></div>
+    </div>
+
+    <div class="tip-card">
+      <h4>🔋 Power Bank Rules 2025 充电宝新规</h4>
+      <div class="tip-item">Under 100Wh: up to 5, carry-on only (no checked bags) <span class="zh">100Wh以下：最多5个，必须随身</span></div>
+      <div class="tip-item">100–160Wh: up to 2, carry-on only <span class="zh">100–160Wh：最多2个，必须随身</span></div>
+      <div class="tip-item">Over 160Wh: prohibited <span class="zh">160Wh以上：禁止携带</span></div>
+      <div class="tip-item">In-flight charging: fully wrapped, no exposed ports <span class="zh">机内充电需完整包装，接口不可外露</span></div>
+    </div>
+
+    <div class="tip-card">
+      <h4>✈️ Security Check 安检</h4>
+      <div class="tip-item">Liquids ≤100ml each, in a clear zip-lock bag <span class="zh">液体每件≤100ml，装透明自封袋</span></div>
+      <div class="tip-item">Laptop/tablet out separately for X-ray <span class="zh">笔记本电脑/平板单独取出过X光</span></div>
+      <div class="tip-item">Declare cash over USD 5,000 <span class="zh">现金超USD 5,000需申报</span></div>
+      <div class="tip-item">Arrive 3 hours early for international flights <span class="zh">深航国际航班建议提前3小时到机场</span></div>
+    </div>
+
+    <div class="tip-card">
+      <h4>⏰ Dining Pitfalls 餐厅避坑</h4>
+      <div class="tip-item">Break Time: most restaurants close 14:30–17:30 — plan around it <span class="zh">多数餐厅14:30–17:30午休关门，安排饭点注意</span></div>
+      <div class="tip-item">Takeaway = can't sit inside; say "Eat In" if you want a table <span class="zh">点Take Away不能在店内坐，要坐说Eat In</span></div>
+      <div class="tip-item">Dongmun Market is mostly cash-only — have Korean won ready <span class="zh">东门市场基本只收现金，提前备好韩元</span></div>
+      <div class="tip-item">Book Donsadon & Aewol The Sunset via Catch Table <span class="zh">Catch Table预约Donsadon和Aewol The Sunset</span></div>
+    </div>
+
+    <div class="tip-card">
+      <h4>🛍️ Shopping & Etiquette 购物礼仪</h4>
+      <div class="tip-item">Plastic ban — shops won't provide bags; bring a reusable one <span class="zh">限塑令：便利店不提供塑料袋，带环保袋</span></div>
+      <div class="tip-item">Pour and receive drinks with both hands; turn away from elders when drinking <span class="zh">双手倒酒/接酒，长辈面前侧身喝</span></div>
+      <div class="tip-item">Visa/Mastercard widely accepted; market stalls mostly cash only <span class="zh">Visa/Master普遍可用，市场摊位多只收现金</span></div>
+      <div class="tip-item">Duty-free limit USD 800/person — declare any excess <span class="zh">免税额度USD 800/人，超出申报补税</span></div>
+    </div>
+
+    <div class="tip-card">
+      <h4>🌡️ Weather & Emergency 天气急救</h4>
+      <div class="tip-item">May: 20–23°C, occasional showers — light jacket + foldable umbrella <span class="zh">5月济州：20–23°C，偶有阵雨，带薄外套+折叠雨伞</span></div>
+      <div class="tip-item">Medical emergency: 119 <span class="zh">医疗急救：119</span></div>
+      <div class="tip-item">Police: 112 <span class="zh">报警：112</span></div>
+      <div class="tip-item">Shenzhen Airlines hotline: 95361 <span class="zh">深航客服：95361</span></div>
+      <div class="tip-item">Save Asia Hotel's front desk number before you leave <span class="zh">出发前记下Asia Hotel前台电话存手机</span></div>
+    </div>
+  </div>
+
+  <div class="sec-title">Check-in Reminder 值机提醒</div>
+  <div class="warn-box">
+    <strong>ZH641 / ZH642 — International Flights</strong> <span class="zh">均为国际航班</span>
+    <ul style="margin-top:8px;padding-left:16px;font-size:12.5px;line-height:2.2">
+      <li>Online seat selection only — must check in at the airport counter <span class="zh" style="display:inline;font-size:10.5px"> · 只能网上选座，不能网上值机</span></li>
+      <li>Outbound ZH641 08:45 → arrive Shenzhen Bao'an by <strong>05:45</strong> <span class="zh" style="display:inline;font-size:10.5px"> · 深圳宝安最晚05:45到达</span></li>
+      <li>Return ZH642 14:00 → arrive Jeju Airport by <strong>11:15</strong> <span class="zh" style="display:inline;font-size:10.5px"> · 济州机场11:15到达办理</span></li>
+      <li>Both flights: <strong>Seat F — right window</strong> <span class="zh" style="display:inline;font-size:10.5px"> · 两程均选F座（右侧窗口）</span></li>
+      <li>Customer service: <strong>95361</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div style="text-align:center;padding:40px 24px;font-size:11px;color:rgba(26,20,16,.26);letter-spacing:.15em">
+  Logan &amp; Sarah · Jeju Island · May 2025 · v6
+</div>
+
+<script>
+function showTab(t) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(t).classList.add('active');
+  document.querySelector('[data-tab="'+t+'"]').classList.add('active');
+  window.scrollTo({top: document.querySelector('nav').offsetTop - 1, behavior:'smooth'});
+}
+function toggleCheck(li) { li.classList.toggle('checked'); }
+
+// Petals
+const pc = document.getElementById('petals');
+['🌸','🌺','🌼','🌸','🌸'].forEach((e,i) => {
+  for (let j=0;j<3;j++){
+    const p = document.createElement('div');
+    p.className = 'petal'; p.textContent = e;
+    p.style.cssText = `left:${Math.random()*100}vw;animation-duration:${9+Math.random()*12}s;animation-delay:${Math.random()*20}s;font-size:${11+Math.random()*9}px`;
+    pc.appendChild(p);
+  }
+});
+</script>
+</body>
+</html>
