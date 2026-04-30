@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeju Island · Logan & Sarah · May 2025</title>
+<title>Jeju Island · Logan & Sarah · May 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -18,6 +18,12 @@
   --day2:  #5b8fa8;
   --day3:  #7a9e7e;
   --day4:  #9b7eb8;
+  /* Romantic hero palette */
+  --rose-1: #ffe5e9;
+  --rose-2: #ffcad4;
+  --rose-3: #f4acb7;
+  --peach:  #ffd6c0;
+  --hero-ink: #6b3a4a;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -66,48 +72,57 @@ span.zh {
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   overflow: hidden;
-  background: linear-gradient(160deg,#1a1410 0%,#2d1f18 40%,#3d2a20 100%);
+  background: linear-gradient(160deg, #ffeef2 0%, #ffd6e0 35%, #ffcad4 65%, #f4acb7 100%);
 }
 .hero::before {
   content:''; position:absolute; inset:0;
   background:
-    radial-gradient(ellipse at 30% 50%, rgba(200,149,108,.15) 0%,transparent 60%),
-    radial-gradient(ellipse at 70% 30%, rgba(91,143,168,.10)  0%,transparent 50%);
+    radial-gradient(ellipse at 30% 40%, rgba(255,255,255,.55) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 75%, rgba(255,214,192,.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,255,255,.35) 0%, transparent 50%);
+  pointer-events: none;
 }
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-size: clamp(11px,1.2vw,13px);
-  letter-spacing: .35em; color: var(--warm);
+  letter-spacing: .35em; color: #b85574;
   text-transform: uppercase; margin-bottom: 20px;
   opacity:0; animation: fadeUp 1s ease .3s forwards;
+  position: relative; z-index: 2;
 }
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(52px,8vw,108px); font-weight: 300;
-  color: var(--paper); line-height: .9;
+  color: var(--hero-ink); line-height: .9;
   text-align: center; letter-spacing: -.02em;
   opacity:0; animation: fadeUp 1s ease .5s forwards;
+  position: relative; z-index: 2;
+  text-shadow: 0 2px 24px rgba(255,255,255,.5);
 }
-.hero-title em { font-style:italic; color: var(--warm); }
+.hero-title em { font-style:italic; color: #c44569; }
 .hero-sub {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-size: clamp(15px,2vw,21px);
-  color: rgba(250,247,242,.55); margin-top: 18px;
+  color: rgba(107,58,74,.7); margin-top: 18px;
   letter-spacing: .1em;
   opacity:0; animation: fadeUp 1s ease .7s forwards;
+  position: relative; z-index: 2;
 }
 .hero-date {
-  font-size: 11px; letter-spacing: .3em; color: var(--gold);
+  font-size: 11px; letter-spacing: .3em; color: #b85574;
   margin-top: 28px; text-transform: uppercase;
   opacity:0; animation: fadeUp 1s ease .9s forwards;
+  position: relative; z-index: 2;
+  font-weight: 500;
 }
 .hero-scroll {
   position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
   display:flex; flex-direction:column; align-items:center; gap:8px;
   opacity:0; animation: fadeUp 1s ease 1.2s forwards; cursor:pointer;
+  z-index: 2;
 }
-.hero-scroll span { font-size:9px; letter-spacing:.3em; color:rgba(250,247,242,.35); text-transform:uppercase; }
-.scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,var(--warm),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+.hero-scroll span { font-size:9px; letter-spacing:.3em; color:rgba(107,58,74,.55); text-transform:uppercase; }
+.scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,#c44569,transparent); animation:scrollPulse 2s ease-in-out infinite; }
 @keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
@@ -382,7 +397,7 @@ nav {
   <div class="hero-eyebrow">Logan & Sarah · Jeju Island Journey</div>
   <div class="hero-title"><em>Jeju</em> Island</div>
   <div class="hero-sub">4 Days · 3 Nights · Together</div>
-  <div class="hero-date">May 3 – 6, 2025</div>
+  <div class="hero-date">May 3 – 6, 2026</div>
   <div class="hero-scroll" onclick="document.querySelector('nav').scrollIntoView({behavior:'smooth'})">
     <div class="scroll-line"></div>
     <span>scroll</span>
@@ -411,7 +426,7 @@ nav {
         <em>Arrival</em> · Jeju City Stroll
         <span class="sub-zh">抵达 · 济州城漫步</span>
       </div>
-      <div class="day-sub">Saturday, May 3 · ZH641</div>
+      <div class="day-sub">Sunday, May 3 · ZH641</div>
       <div class="day-accent" style="background:var(--day1)"></div>
     </div>
   </div>
@@ -601,7 +616,7 @@ nav {
         <em>East Coast</em> · Udo Island Day Tour
         <span class="sub-zh">东线 · 牛岛一日游（酒店附赠）</span>
       </div>
-      <div class="day-sub">Sunday, May 4 · Hotel-included Tour</div>
+      <div class="day-sub">Monday, May 4 · Hotel-included Tour</div>
       <div class="day-accent" style="background:var(--day2)"></div>
     </div>
   </div>
@@ -811,7 +826,7 @@ nav {
         <em>Southwest</em> · Tea · Coast · Sunset
         <span class="sub-zh">西南线 · 茶园 · 海岸 · 日落</span>
       </div>
-      <div class="day-sub">Monday, May 5 · Self-guided · Taxi + Bus 202</div>
+      <div class="day-sub">Tuesday, May 5 · Self-guided · Taxi + Bus 202</div>
       <div class="day-accent" style="background:var(--day3)"></div>
     </div>
   </div>
@@ -1033,7 +1048,7 @@ nav {
         <em>Farewell</em> · Dongmun Market · Home
         <span class="sub-zh">告别 · 东门市场 · 回深圳</span>
       </div>
-      <div class="day-sub">Tuesday, May 6 · ZH642 14:00</div>
+      <div class="day-sub">Wednesday, May 6 · ZH642 14:00</div>
       <div class="day-accent" style="background:var(--day4)"></div>
     </div>
   </div>
@@ -1099,7 +1114,7 @@ nav {
       <div class="tl-dot accent" style="background:var(--day4)"></div>
       <div class="tl-content">
         <div class="tl-main"><strong>Dongmun Traditional Market</strong> — Est. 1945 · weekday opening: 07:00 ✅
-          <span class="zh">东门传统市场 · 1945年创立 · 周二工作日07:00开门</span>
+          <span class="zh">东门传统市场 · 1945年创立 · 周三工作日07:00开门</span>
         </div>
         <div class="tl-meta">
           <span class="tag tag-dur">Total 150 min <span class="zh">共150分钟</span></span>
@@ -1348,22 +1363,22 @@ nav {
   <div class="sec-title">Evening Plan — No Repeats <span class="zh-label">四天晚上安排</span></div>
   <div class="night-strip">
     <div class="night-card" style="background:var(--day1)">
-      <div class="n-day">Day 1 · Sat</div>
+      <div class="n-day">Day 1 · Sun</div>
       <div class="n-en">Nuwemaru St<br>Lotte DF Scout</div>
       <div class="n-zh">宝健路逛街<br>乐天免税踩点</div>
     </div>
     <div class="night-card" style="background:var(--day2)">
-      <div class="n-day">Day 2 · Sun</div>
+      <div class="n-day">Day 2 · Mon</div>
       <div class="n-en">Shilla Duty Free<br>Main Shopping</div>
       <div class="n-zh">新罗免税店<br>正式购物</div>
     </div>
     <div class="night-card" style="background:var(--day3)">
-      <div class="n-day">Day 3 · Mon</div>
+      <div class="n-day">Day 3 · Tue</div>
       <div class="n-en">Aewol Sunset Café<br>Light Dinner</div>
       <div class="n-zh">涯月日落咖啡<br>轻食晚餐</div>
     </div>
     <div class="night-card" style="background:var(--day4)">
-      <div class="n-day">Day 4 · Tue</div>
+      <div class="n-day">Day 4 · Wed</div>
       <div class="n-en">14:00 Takeoff<br>No evening</div>
       <div class="n-zh">14:00起飞<br>无晚上安排</div>
     </div>
@@ -1476,13 +1491,13 @@ nav {
     <div class="tip-card">
       <h4>🛂 Immigration 出入境</h4>
       <div class="tip-item">Visa-free 30 days for Chinese passport holders <span class="zh">韩国对中国公民免签30天</span></div>
-      <div class="tip-item">e-Arrival Card: voluntary in 2025, not mandatory <span class="zh">e-Arrival Card：2025年自愿填写，非强制</span></div>
+      <div class="tip-item">e-Arrival Card: voluntary in 2026, not mandatory <span class="zh">e-Arrival Card：2026年自愿填写，非强制</span></div>
       <div class="tip-item">Duty-free allowance: USD 800/person <span class="zh">入境免税额度：USD 800/人</span></div>
       <div class="tip-item">Prohibited: fresh produce, meat, soil <span class="zh">禁带：新鲜蔬果、肉类、土壤</span></div>
     </div>
 
     <div class="tip-card">
-      <h4>🔋 Power Bank Rules 2025 充电宝新规</h4>
+      <h4>🔋 Power Bank Rules 2026 充电宝新规</h4>
       <div class="tip-item">Under 100Wh: up to 5, carry-on only (no checked bags) <span class="zh">100Wh以下：最多5个，必须随身</span></div>
       <div class="tip-item">100–160Wh: up to 2, carry-on only <span class="zh">100–160Wh：最多2个，必须随身</span></div>
       <div class="tip-item">Over 160Wh: prohibited <span class="zh">160Wh以上：禁止携带</span></div>
@@ -1537,7 +1552,7 @@ nav {
 </div>
 
 <div style="text-align:center;padding:40px 24px;font-size:11px;color:rgba(26,20,16,.26);letter-spacing:.15em">
-  Logan &amp; Sarah · Jeju Island · May 2025 · v6
+  Logan &amp; Sarah · Jeju Island · May 2026 · v7
 </div>
 
 <script>
