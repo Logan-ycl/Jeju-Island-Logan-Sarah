@@ -85,7 +85,7 @@ span.zh {
 .hero-eyebrow {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-size: clamp(11px,1.2vw,13px);
-  letter-spacing: .35em; color: #b85574;
+  letter-spacing: .35em; color: #8a2d4a;
   text-transform: uppercase; margin-bottom: 20px;
   opacity:0; animation: fadeUp 1s ease .3s forwards;
   position: relative; z-index: 2;
@@ -93,23 +93,23 @@ span.zh {
 .hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(52px,8vw,108px); font-weight: 300;
-  color: var(--hero-ink); line-height: .9;
+  color: #4a1d2d; line-height: .9;
   text-align: center; letter-spacing: -.02em;
   opacity:0; animation: fadeUp 1s ease .5s forwards;
   position: relative; z-index: 2;
   text-shadow: 0 2px 24px rgba(255,255,255,.5);
 }
-.hero-title em { font-style:italic; color: #c44569; }
+.hero-title em { font-style:italic; color: #a82850; }
 .hero-sub {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic; font-size: clamp(15px,2vw,21px);
-  color: rgba(107,58,74,.7); margin-top: 18px;
+  color: #6b3a4a; margin-top: 18px;
   letter-spacing: .1em;
   opacity:0; animation: fadeUp 1s ease .7s forwards;
   position: relative; z-index: 2;
 }
 .hero-date {
-  font-size: 11px; letter-spacing: .3em; color: #b85574;
+  font-size: 11px; letter-spacing: .3em; color: #8a2d4a;
   margin-top: 28px; text-transform: uppercase;
   opacity:0; animation: fadeUp 1s ease .9s forwards;
   position: relative; z-index: 2;
@@ -121,8 +121,8 @@ span.zh {
   opacity:0; animation: fadeUp 1s ease 1.2s forwards; cursor:pointer;
   z-index: 2;
 }
-.hero-scroll span { font-size:9px; letter-spacing:.3em; color:rgba(107,58,74,.55); text-transform:uppercase; }
-.scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,#c44569,transparent); animation:scrollPulse 2s ease-in-out infinite; }
+.hero-scroll span { font-size:9px; letter-spacing:.3em; color:rgba(74,29,45,.65); text-transform:uppercase; }
+.scroll-line { width:1px; height:38px; background:linear-gradient(to bottom,#a82850,transparent); animation:scrollPulse 2s ease-in-out infinite; }
 @keyframes scrollPulse { 0%,100%{opacity:.4} 50%{opacity:1} }
 @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
 
@@ -379,6 +379,57 @@ nav {
 /* ── MAP ─────────────────────────────────────────── */
 .map-svg { width:100%; max-width:700px; display:block; margin:0 auto; }
 
+
+/* ── LORE CARDS (expandable history & trivia) ─────────── */
+.lore {
+  margin-top: 10px;
+  border-top: 1px dashed var(--mist);
+  padding-top: 8px;
+}
+.lore summary {
+  cursor: pointer; list-style: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic; font-size: 12.5px;
+  color: var(--gold); letter-spacing: .04em;
+  display: flex; align-items: center; gap: 6px;
+  padding: 3px 0;
+  transition: color .2s;
+}
+.lore summary::-webkit-details-marker { display: none; }
+.lore summary::before {
+  content: '+'; display: inline-block;
+  font-size: 13px; color: var(--warm);
+  width: 14px; text-align: center;
+  font-weight: 500;
+  transition: transform .2s;
+}
+.lore[open] summary::before { content: '-'; }
+.lore summary:hover { color: var(--warm); }
+.lore-body {
+  padding: 10px 2px 4px;
+  font-size: 12.5px; line-height: 1.8;
+  color: rgba(26,20,16,.78);
+}
+.lore-body .lore-section { margin-bottom: 11px; }
+.lore-body .lore-section:last-child { margin-bottom: 0; }
+.lore-body .lore-h {
+  display: block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--warm);
+  margin-bottom: 3px;
+  letter-spacing: .02em;
+}
+.lore-body b {
+  font-weight: 500;
+  color: rgba(26,20,16,.92);
+}
+.checklist .lore { margin-top: 8px; padding-top: 7px; }
+.checklist .lore summary { font-size: 12px; }
+.checklist li.checked .lore { opacity: 1; text-decoration: none; }
+.checklist li.checked .lore-body { opacity: 1; }
+
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media(max-width:600px){
   .night-strip { grid-template-columns:repeat(2,1fr); }
@@ -502,6 +553,12 @@ nav {
           <span class="tag tag-dur">45 min</span>
           <span class="tag tag-tx">🚕 Taxi 8 min · ¥12</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">传说与地质</span>济州岛是火山岛，岛民对汉拿山的敬畏渗透到每块石头。龙头岩的传说是：汉拿山上一条神龙偷了山神的玉珠想升天，被山神一箭射落海边，身子沉海、龙首向天石化——从此汉拿山失去守护神，济州人世代要靠海为生。这传说其实是把火山地貌神话化：龙头岩本就是约 200 万年前火山熔岩遇海冷却的玄武岩柱，海蚀几十万年才雕出「龙头」的形状。</div>
+        <div class="lore-section"><span class="lore-h">观察细节</span>退潮时绕到岩石侧面看，能清楚看见熔岩冷却时形成的柱状节理（六角形断面）——和 Day 3 大浦柱状节理带是同源地貌，只是龙头岩这处尺度小、被海蚀打磨得不规则。济州诗人金光林专门为它写过诗，本地人说这块石头能「望见汉拿山的悲愿」。</div>
+        <div class="lore-section"><span class="lore-h">当地视角</span>对济州本地人来说，龙头岩不是网红景点而是「村口的老石头」。岩石下方常年有海女作业，她们认为龙头岩是济州五大守护石之一，下海前会朝它的方向鞠一躬。如果碰到穿着橙色潜水服、戴黄色面镜的阿姨们，那就是真正的济州海女。</div>
+        </div></details>
       </div>
     </div>
 
@@ -517,6 +574,12 @@ nav {
           <span class="tag tag-dur">45 min</span>
           <span class="tag tag-tx">🚕 Taxi 10 min · ¥18</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">年纪不大但身份特殊</span>看着像百年古迹，其实 2008 年才建——是济州市政府委托设计的「功能性公共艺术品」。马的造型来自济州的「조랑말」（济州矮马，体高 1 米左右），是高丽时期蒙古人在济州建养马场留下的后代。元朝时济州是向中原供应战马的核心基地，岛上 2 万多匹马的传统就从那时延续下来。</div>
+        <div class="lore-section"><span class="lore-h">红白配色的航海规则</span>不是随便涂的——国际航标规则里，进港时<b>红灯在右、白灯在左</b>（red right returning），这两座灯塔精确遵守这个规则，是真正在工作的活灯塔。每晚日落后会亮灯：红灯闪 5 秒、白灯闪 4 秒，渔船凭灯色判断航道。</div>
+        <div class="lore-section"><span class="lore-h">拍照机位</span>想拍到「双塔+夕阳」同框，要走到东边的防波堤上往西回望——这是济州本地摄影师公认的机位。汉拿山只在天气特别清的日子才会作为远景出现，5 月的概率约 30%。</div>
+        </div></details>
       </div>
     </div>
 
@@ -531,6 +594,12 @@ nav {
           <span class="tag tag-dur">60 min</span>
           <span class="tag tag-tx">🚕 Taxi 10 min · ¥18</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">路的来历</span>原名「Yeon-dong 商业街」，2016 年济州市重新规划后改名「Nuwemaru」——济州方言「卧着的山岭」，因为这条街地势平坦、两端是缓坡。这里是新济州（신제주）的核心商圈，相对于旧济州的东门市场，这是 1980 年代后期为分散人口建设的新区。</div>
+        <div class="lore-section"><span class="lore-h">路上的济州符号</span>注意路口的石头老人（돌하르방 / 多尔哈鲁邦）——济州独有的玄武岩雕像，传统上立在村庄入口辟邪。最早的可追溯到 1754 年，原型是村落守护神，外形特征是大耳、凸眼、双手交叉于腹（一手在上一手在下，位置不同代表男女）。这条街的是装饰复制品，但形制完全照原型。</div>
+        <div class="lore-section"><span class="lore-h">吃货雷达</span>Olive Young 是化妆品扫货圣地，但本地人更推荐巷子里的 GS25 限定零食——济州 GS25 有三款独家：火山岩盐巧克力、汉拿峰柚子软糖、济州海女曲奇，岛外买不到。</div>
+        </div></details>
       </div>
     </div>
 
@@ -547,6 +616,12 @@ nav {
           <span class="tag tag-tip">💡 Book via Catch Table app <span class="zh">提前预约</span></span>
           <span class="tag tag-tx">Walk 5 min</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">黑猪的来历</span>济州黑猪（흑돼지）不是普通猪——是从约 2,000 年前就在济州岛繁衍的本土品种，体型小、毛全黑、肉质密，2015 年被韩国指定为「国家天然纪念物第 550 号」。传统上济州黑猪养在「통시」（茅厕猪圈）里——这听起来骇人，但在缺粮的火山岛是循环农业的智慧，使猪肉风味独特，「济州黑猪」在韩国是高端食材的代名词。现代当然不再这么养。</div>
+        <div class="lore-section"><span class="lore-h">店名的双关</span>「돈사돈」是双关——「豚思豚」，意思是「猪想猪」，也谐音「돈을 사는 돈」（用钱赚钱），是创始人 1999 年开店时的玩笑。GD（权志龙）2013 年的电视节目里推荐过，从此变成济州必打卡店之一。</div>
+        <div class="lore-section"><span class="lore-h">正确吃法</span>先吃<b>五花肉</b>（삼겹살）和<b>颈肉</b>（목살）原味——蘸<b>멜젓</b>（凤尾鱼酱）或<b>소금</b>（粗盐）；只有不够鲜的猪肉才会用生菜+泡菜+蒜片包着吃来掩盖味道。这家的凤尾鱼酱是济州东海岸渔村做法，发酵 2 年以上，咸鲜中带回甘。点单两人份就够——济州黑猪一份 200g，比首尔的部位足。</div>
+        </div></details>
       </div>
     </div>
 
@@ -561,6 +636,11 @@ nav {
           <span class="tag tag-shop">60 min · Open until 21:00</span>
           <span class="tag tag-tx">Walk 5 min</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">济州的免税岛历史</span>济州 1978 年开始实行免税岛政策，是韩国最早的免税岛屿。乐天 1989 年进驻济州，是首尔之外的首家分店；新罗 2014 年开业，竞争白热化后两家形成「价差通常 3-5%」的均衡——所以购物前比一下完全有必要。</div>
+        <div class="lore-section"><span class="lore-h">免税逻辑</span>韩国免税店分两种：<b>机场免税</b>（出境后才能取）和<b>市内免税</b>（提前买、机场提货）。乐天和新罗都是市内免税——这意味着你买的所有东西不会占用旅行行李重量，但离境时间不能改，否则货品会被退回扣手续费。</div>
+        </div></details>
       </div>
     </div>
 
@@ -666,6 +746,12 @@ nav {
           <span class="tag tag-dur">90 min</span>
           <span class="tag tag-tip">💡 Peanut ice cream — must try <span class="zh">花生冰淇淋必吃</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">名字的由来</span>牛岛（우도）从空中俯视形似一头卧牛——头朝北（牛头峰），身子是岛主体，尾巴是西南端的细长沙嘴。最早记录在 1697 年朝鲜文人金南仕的《耽罗志》。岛上原本无人定居，1697 年朝鲜王朝设牧马场，1840 年才允许平民移居——所以是个「年轻」的岛，大多数姓氏能追溯到 19 世纪的迁入族谱。</div>
+        <div class="lore-section"><span class="lore-h">珊瑚沙滩的秘密</span>西滨白沙海水浴场（서빈백사）是韩国唯一一处由「珊瑚碎屑」构成的沙滩——严格说不是真珊瑚，是叫<b>石灰红藻</b>（홍조류）的红色海藻死后钙化沉积、被海浪打成米粒大小的颗粒。1991 年被指定为天然纪念物第 438 号，禁止带走任何沙子（每年抓到的游客都被罚款 200 万韩元）。手握一把对着光看，能看到淡粉、米白、淡紫的颗粒——每一粒都是几十万年才形成。</div>
+        <div class="lore-section"><span class="lore-h">花生冰淇淋为什么是必吃</span>牛岛 80% 的耕地种花生，不是因为浪漫，而是因为火山玄武岩风化的土壤排水极好但贫瘠，只有花生这种豆科植物（能固氮）能高产。牛岛花生粒小、油脂含量比普通花生高 15%。1980 年代当地一家叫「牛岛花生 Aldeureumeori」的小店发明了把花生粉撒在软冰上的吃法——本地人推荐 <b>Jimini Cafe</b> 或 <b>Blancrocher</b>，他们的花生粉是当天现磨的。</div>
+        </div></details>
       </div>
     </div>
 
@@ -677,6 +763,11 @@ nav {
           <span class="zh">岛上午餐 · 海女海螺拌面</span>
         </div>
         <div class="tl-meta"><span class="tag tag-food">60 min</span></div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">海女的食物</span>「보말」是济州方言的海螺，标准韩语叫「고둥」。这碗面是海女们下海后的「补气餐」——海女在 10°C 海水里憋气作业 1-2 分钟，每天下水 4-7 小时，体能消耗惊人。海螺富含锌、镁，配上手工刀削面（칼국수）的碳水，是 1960 年代海女村里的家常做法，2000 年代才商业化。</div>
+        <div class="lore-section"><span class="lore-h">海女的现状</span>济州海女是 UNESCO 非遗（2016 年列入），全岛现存约 3,200 人，平均年龄 73 岁。30 岁以下的海女只有 7 个人。她们分三个等级——上军（상군，能下到 20m）、中军（중군，10-15m）、下军（하군，5-10m），全靠肺活量和经验，不用氧气瓶。这碗面里的螺基本都是当天她们亲手采的。</div>
+        </div></details>
       </div>
     </div>
 
@@ -702,6 +793,12 @@ nav {
           <span class="zh" style="display:block">约5,000年前海底火山喷发形成 · 99块尖石环绕火山口如皇冠 · 不登顶在山脚拍照也非常出片</span>
         </div>
         <div class="tl-meta"><span class="tag tag-dur">60 min (no summit) <span class="zh">不登顶</span></span></div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">如何形成</span>约 5,000 年前形成——是火山喷发，但不是普通的熔岩流，而是<b>水中喷发</b>（hydrovolcanic eruption）：岩浆从浅海海底喷出，遇水瞬间汽化爆炸，把岩屑像爆米花一样抛向空中，落下后堆叠成一座环形火山口（凝灰岩堆积锥）。这种地质叫「tuff cone」，全球罕见，因此 2007 年被列入 UNESCO 世界自然遗产。它原本是离岸小岛，1940 年代日本占领期间为军事用途填海连陆才变成半岛。</div>
+        <div class="lore-section"><span class="lore-h">99 块尖石的传说</span>山顶火山口边缘有 99 块尖形玄武岩柱，济州民间说「如果有 100 块，济州就会出真龙天子」——这是李氏朝鲜时期的政治隐喻：济州是流放之地（朝鲜王朝把失势的两班贵族流放到济州，最有名的是被流放 5 年的金正喜），不能「出帝王」。这 99 块石头每一块都有名字，来自当地巫俗仪式。</div>
+        <div class="lore-section"><span class="lore-h">登顶值不值</span>登顶约 30 分钟（182 米高，560 级台阶）。山顶能看见火山口的碗状凹地，深约 90 米，里面长满草——这是火山口几千年沉积的土壤。但如果不登顶，山脚下从西北侧拍最好看：日出峰侧面是教科书级的「海蚀崖」，玄武岩横纹清晰，是济州最经典的视觉符号。</div>
+        </div></details>
       </div>
     </div>
 
@@ -730,6 +827,12 @@ nav {
           <span class="tag tag-dur">60 min</span>
           <span class="tag tag-tx">Tour van ~20 min</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">名字与位置</span>济州方言：「섭지」 意为「狭窄的土地」，「코지」 意为「伸入海里的岬角」。是城山附近一个延伸入海约 2 公里的玄武岩岬角。地质上是 5 万年前的小型水火山喷发遗迹，岩石比城山年轻，颜色更黑、孔隙更多。</div>
+        <div class="lore-section"><span class="lore-h">All In 与玻璃教堂</span>2003 年 SBS 韩剧《All In》（李秉宪、宋慧乔主演）选这里做最后告别戏的取景地，剧组临时搭了一座白色教堂，剧火了之后教堂保留下来变成游客打卡点。后来 2008 年安藤忠雄设计了真正的混凝土玻璃教堂「Glass House」——清水混凝土+大面积海景玻璃幕，现在是济州现代建筑代表作之一。安藤同时还设计了旁边的「Genius Loci 冥想园」和「水风石」（Water Wind Stone）展厅，三件作品都在这片岬角上，建议从远到近看。</div>
+        <div class="lore-section"><span class="lore-h">油菜花季</span>5 月初涉地可支的油菜花刚过盛期但仍有零星花田。济州油菜花季峰值是 3 月底到 4 月初，有「济州黄金」之称——5 月你们看到的是花尾，金黄相间绿色嫩荚，颜色更柔。</div>
+        </div></details>
       </div>
     </div>
 
@@ -747,6 +850,12 @@ nav {
           <span class="tag tag-dur">60 min</span>
           <span class="tag tag-tx">Tour van ~20 min</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">名字像诗</span>「月光停驻之村」——传说一位渔人月夜出海未归，妻子每夜在海边等他，久了石化成礁，月亮就停在那块礁石上方陪她。地理上月汀里位于济州东北海岸，海床是细白火山砂混贝壳碎屑，因此海水呈现出 Caribbean 风的青绿色（玄武岩沿岸通常是深蓝色，月汀里是例外）。</div>
+        <div class="lore-section"><span class="lore-h">从渔村到网红的二十年</span>1990 年代月汀里只是一个 200 户人家的小渔村，没人知道。2008 年济州环岛自行车道修通，2012 年韩国综艺《2 Days & 1 Night》在此取景，2013 年第一家海景咖啡馆「Cafe May」开张——现在海岸线上有 40 多家咖啡馆，房价从 2010 年的均价 50 万韩元/坪涨到现在 1,500 万韩元/坪，30 倍涨幅，是济州最戏剧的乡镇变迁。</div>
+        <div class="lore-section"><span class="lore-h">白色风车</span>海面上的白色风车是济州道立的风力发电站。济州承诺 2030 年实现 100% 可再生能源（碳中和岛），目前风电+光伏占比已超 80%。这些风车每个年发电 750 万千瓦时，可供约 2,000 户家庭使用。</div>
+        </div></details>
       </div>
     </div>
 
@@ -865,6 +974,12 @@ nav {
           <span class="tag tag-dur">90 min</span>
           <span class="tag tag-tip">💡 Best light of the day — prime photos <span class="zh">早晨光线最好</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">一片荒地变茶园的故事</span>现在的茶田原本是济州西南部最贫瘠的火山玄武岩荒地。1979 年韩国茶企「太平洋集团」（현 아모레퍼시픽 / 现 Amorepacific，做雪花秀、兰芝等化妆品的母公司）创始人<b>徐成焕</b>决定在这里种绿茶——因为他相信「韩国应该有自己的茶文化，而不只是从中国进口」。最初 5 年茶树几乎全部枯死，他亲自带工人改良火山土，1981 年第一批济州绿茶才采摘成功。现在这片茶园 100 公顷，是韩国最大的有机茶园。</div>
+        <div class="lore-section"><span class="lore-h">名字的密码</span><b>O'sulloc</b> = 「O」+ 「Sulloc」。「Sulloc」（설록）由「雪」（설）+「绿」（록，绿同音字）合成——「被雪覆盖的绿」，指茶树在济州冬天经常落雪、第二年春天发出的嫩芽最好。「O」是 organic 的开头，2002 年品牌国际化时加上的前缀。</div>
+        <div class="lore-section"><span class="lore-h">必点不是抹茶拿铁</span>本地人推荐<b>绿茶罗马诺</b>（녹차 로마노）——浓缩绿茶冲入打发奶油，参考自意大利的「Caffè Romano」。比抹茶拿铁更能尝到济州绿茶的「草本+岩矿」风味。如果想吃甜的，<b>绿茶生奶油卷</b>（瑞士卷）至今每天限量 200 条，下午 3 点常常售罄。</div>
+        </div></details>
       </div>
     </div>
 
@@ -893,6 +1008,12 @@ nav {
           <span class="tag tag-dur">60 min</span>
           <span class="tag tag-warn">⚠ Check low tide on Naver Map before heading out <span class="zh">出发前查当天退潮时间</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">地球的横截面</span>济州最古老的火山地貌之一——约 180 万年前形成，比城山日出峰老 100 倍。地质特殊性在于：<b>多次水下喷发</b>叠加，每次喷发的岩浆遇水冷却成不同颜色和密度的层，像千层蛋糕一样横向堆叠。海蚀几十万年后，把「蛋糕」切开了一个剖面给你看——黄、灰、黑、红的地层一目了然，是济州地质学家最爱带学生来的「露天教室」。背后的山房山（산방산）是同期形成的更大火山。</div>
+        <div class="lore-section"><span class="lore-h">退潮才能走的真正原因</span>海岸步道在退潮线和涨潮线之间，涨潮时海水会完全没过步道。<b>5 月退潮约在中午左右</b>，但具体时间每天差 50 分钟，必须查 Naver 当天潮汐。如果遇大风浪，景区也会临时关闭——这不是营销噱头，2018 年和 2021 年都发生过游客被涨潮困住、海警救援的事故。</div>
+        <div class="lore-section"><span class="lore-h">海女的特殊性</span>龙头海岸的海女多是 60 岁以上的「上军」，她们会在岩石上摆几个塑料盆，里面是当天采的<b>海螺、海胆、海参</b>，有时还有<b>鲍鱼</b>。直接生吃，蘸醋椒酱（초고추장）。价格按盆 ₩10,000-30,000，砍价没用——海女不会韩语之外的任何语言，但她们认 Kakao Pay 二维码。</div>
+        </div></details>
       </div>
     </div>
 
@@ -918,6 +1039,12 @@ nav {
           <span class="tag tag-food">90 min</span>
           <span class="tag tag-opt">Alt: Jeju Osung — braised hairtail fish <span class="zh">备选：Jeju Osung 炖带鱼老字号</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">方头鱼到底是什么鱼</span>방어 = <b>黄条鰤</b>（学名 Seriola quinqueradiata），中译「方头鱼」其实是误译，因为它的头确实方方正正、肉质硬实。在韩国是冬季高级鱼（12-2 月最肥），夏天到秋天偏瘦。但济州西南海域因为有暖流（黑潮分支）经过，5 月仍能吃到不错的方어。</div>
+        <div class="lore-section"><span class="lore-h">吃法决定档次</span><b>烤方어</b>（방어구이）是平民吃法；高级吃法是<b>生鱼片</b>（방어회）+<b>鱼骨汤</b>（방어매운탕）的全套（방어 코스）。这家是套餐为主，会先上腌渍小菜（반찬）、然后烤鱼或生鱼片、最后是鱼骨味噌汤——传统济州吃法。</div>
+        <div class="lore-section"><span class="lore-h">반찬是看店家良心的地方</span>济州餐厅的「赠送小菜」数量和质量是隐性标签。这家通常会上：海带凉拌、济州苦瓜、明太鱼干丝、紫薯泥、济州萝卜泡菜等等。这些都是免费续的——空了直接喊「이모！」（阿姨！）就行。</div>
+        </div></details>
       </div>
     </div>
 
@@ -935,6 +1062,12 @@ nav {
           <span class="tag tag-dur">60 min</span>
           <span class="tag tag-tx">Walk 10 min from restaurant</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">六边形的几何学</span>柱状节理的形成原理：熔岩冷却时体积收缩，从外表面向内开裂，<b>最省能量的几何形状是六边形</b>——和蜂巢、肥皂泡逻辑相同（六边形等周长下围成的面积最大）。所以全世界的柱状节理几乎都是六边形：北爱尔兰的 Giant's Causeway、冰岛的 Stuðlaberg、美国 Devils Postpile，原理相同。济州大浦的特殊在于<b>它直接在海里</b>，柱子从海面伸向海面以上 10-25 米，被海浪雕刻得格外清晰。</div>
+        <div class="lore-section"><span class="lore-h">形成时间</span>约 25 万年前，汉拿山火山喷发的玄武岩熔岩流到此地，遇海水冷却成柱状节理。1996 年被指定为韩国天然纪念物第 443 号。柱子直径 30-50 厘米，最高的「立柱群」有约 4,000 根六边形柱子。</div>
+        <div class="lore-section"><span class="lore-h">风浪的诗</span>如果赶上潮起+西南风，海浪会以「砰砰」的低音击打节理柱底——本地渔民把这个声音叫「龙的鼓声」（용의 북소리）。涨潮时浪可冲到 20 米高。但这种戏剧性场景需要 3 级以上海浪，5 月相对平静，能听到的概率约 30%。</div>
+        </div></details>
       </div>
     </div>
 
@@ -952,6 +1085,12 @@ nav {
           <span class="tag tag-dur">150 min</span>
           <span class="tag tag-tx">Walk 5 min</span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">黑白红黄四色沙的奇景</span>「색달」（色达）是韩语「色彩多变」——这里的沙子是<b>黑、白、红、黄</b>四色混合，世界罕见。<b>白沙</b>来自珊瑚和贝壳碎屑，<b>黑沙</b>来自玄武岩风化，<b>红沙</b>来自含铁矿物（火山岩中的赤铁矿氧化），<b>黄沙</b>来自含钙泥岩。在阳光下四色像马赛克。</div>
+        <div class="lore-section"><span class="lore-h">国家旅游度假区的起点</span>中文是济州第一个被规划为「国家旅游度假区」的地方（1978 年朴正熙时代决策），现在容纳 7 家五星级酒店——Lotte Hotel Jeju、Shilla Jeju、Hyatt Regency Jeju、Sheraton 等。海滩对所有人开放（韩国海滩没有私属一说），但海滩到酒店的悬崖步道是各家酒店共建的。</div>
+        <div class="lore-section"><span class="lore-h">冲浪秘密</span>中文海滩是济州少数适合冲浪的海滩之一。5 月浪高 0.5-1.5 米，是初学者友好的「清玻璃浪」（glass wave）。海滩西端有 3 家冲浪学校，2 小时课程约 ₩60,000-80,000。4-5 月会看到本地的「海女冲浪手」（年轻一代海女兼职冲浪教练）。</div>
+        </div></details>
       </div>
     </div>
 
@@ -974,6 +1113,11 @@ nav {
           <span class="zh">涯月邑海边散步</span>
         </div>
         <div class="tl-meta"><span class="tag tag-dur">50 min</span></div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">石墙小镇的来历</span>「애」是「涯」，「월」是「月」——「月光照在岩岸」。这里是济州最古老的人类聚居地之一：考古发现新石器时代（约 5,000 年前）的遗址。整个镇子的特色是<b>济州石墙</b>（돌담 / Doldam）——用玄武岩干砌（不用任何粘合剂）的低墙，2014 年被联合国粮农组织列入「全球重要农业遗产」。这些墙的功能是防风（济州常年大风 7-8 级），墙石之间留有缝隙让风穿过——智慧的「半透」设计，比实心墙更稳固。</div>
+        <div class="lore-section"><span class="lore-h">GD 与涯月</span>G-Dragon 在涯月有一座私人住宅，2017 年用 25 亿韩元买下海边的旧农舍改造，他的咖啡馆<b>Monsant Cafe</b>也在这附近——由建筑师 Yoo Eun-jeong 设计，全玻璃面对大海，2017 年开业第一年就成 Instagram 顶流。涯月的房价被 GD 效应推高了 3 倍。</div>
+        </div></details>
       </div>
     </div>
 
@@ -991,6 +1135,12 @@ nav {
           <span class="tag tag-food">90 min</span>
           <span class="tag tag-warn">⚠ Reservation required — Catch Table app <span class="zh">必须提前预约</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">不只是咖啡馆</span>2019 年开业，建筑设计来自首尔建筑事务所 ONE O ONE Architects——三层无柱玻璃幕墙结构，玻璃直接架在玄武岩岩床上，下面是涯月海岸线。日落时整面墙变成「光的画布」，咖啡馆故意不放音乐、用暖色微光，让客人专注看日落。这种设计哲学叫「Quiet Luxury」，是济州 2010 年代后期 boutique cafe 的代表作。</div>
+        <div class="lore-section"><span class="lore-h">日落的天文学</span>5 月初济州日落时间约 19:30-19:42——比首尔晚 8-10 分钟（济州在更南更西）。日落后还有约 25 分钟的「魔术时刻」（蓝色到紫色的过渡），这是更值得拍照的时段——很多游客 19:45 太阳一下山就走，错过了最美的部分。建议待到 20:10 再走。</div>
+        <div class="lore-section"><span class="lore-h">点单建议</span>本店招牌是 <b>Aewol Latte</b>——拿铁底+济州海盐糖浆+海盐奶油泡，咸甜对冲，配日落很妙。如果不喝咖啡，<b>汉拿峰柚子茶</b>（한라봉유자차）是济州本地组合，柚子的苦味在汉拿峰的甜里被中和。本店有 1 杯起的最低消费规则。</div>
+        </div></details>
       </div>
     </div>
 
@@ -1120,6 +1270,12 @@ nav {
           <span class="tag tag-dur">Total 150 min <span class="zh">共150分钟</span></span>
           <span class="tag tag-warn">⚠ Mostly cash only — have Korean won ready <span class="zh">大部分摊位只收现金，提前备好韩元</span></span>
         </div>
+      
+        <details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">80 年的老市场</span>始建于 1945 年——日本投降、朝鲜半岛光复那年，济州人在原日军第二东门旧址自发设摊形成市场，所以叫「东门市场」。1954 年正式注册，是济州最古老的常设市场。它见证过 1948 年济州 4·3 事件（一段沉重的济州近代史）、1960 年代经济起飞、1990 年代旅游开发——直到现在仍有约 300 个摊位，70% 是开业 30 年以上的老店。</div>
+        <div class="lore-section"><span class="lore-h">摊位编号系统</span>市场分 8 个区，每个区有 4 个门（即 1-8 号门）。<b>1 号门</b>：伴手礼、零食、橘子产品；<b>2-3 号门</b>：服装、日用品；<b>4-5 号门</b>：海鲜（活鱼、贝类、海女当天的渔获）；<b>6 号门</b>：肉类（黑猪肉、济州牛）；<b>7-8 号门</b>：水果蔬菜、辣椒酱、泡菜。<b>夜市</b>（19:00 开始）只在 8 号门附近——你们早上去看不到。</div>
+        <div class="lore-section"><span class="lore-h">讨价还价不是惯例</span>济州市场和东南亚市场不同——明码标价是普遍规则，砍价被视为不礼貌。但<b>老板娘的「덤」（送品）文化很普遍</b>——如果你买得多，主动问「덤 주세요」（请送一点），通常会送一两个橘子或一勺泡菜，这是济州老市场的人情味。</div>
+        </div></details>
       </div>
     </div>
 
@@ -1263,13 +1419,34 @@ nav {
 
   <div class="sec-title">Dongmun Market Checklist <span class="zh-label">购物清单（可勾选）</span></div>
   <ul class="checklist">
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Tangerine mochi — freshly made, expect a queue</div><div class="zh">橘子大福（现做麻薯，排队必买）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🥩 Charcoal-grilled black pork skewer — eat while walking</div><div class="zh">炭烤黑猪肉串（边走边吃）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Fresh-squeezed tangerine juice — ~¥15/cup</div><div class="zh">鲜榨橘子汁（橘子爷爷，约¥15/杯）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍫 Tangerine chocolate gift boxes — ~20% cheaper than airport</div><div class="zh">橘子巧克力礼盒（比机场/免税店便宜约20%）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🌿 Red ginseng products — better value than Seoul</div><div class="zh">红参产品（性价比高于首尔）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍑 Hallabong tangerines (fresh) — heavy, watch baggage weight</div><div class="zh">汉拿峰橘子鲜果（重，注意行李重量）</div></div></li>
-    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🪨 Amethyst ornaments — Jeju specialty</div><div class="zh">紫水晶摆件（济州特产）</div></div></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Tangerine mochi — freshly made, expect a queue</div><div class="zh">橘子大福（现做麻薯，排队必买）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">不是日本的，是济州本土发明</span>原型是日本草莓大福，但济州人 2010 年代用<b>汉拿峰</b>做馅，外皮糯米粉里加了少量橘子皮粉，所以皮是淡橘色。东门市场最有名的「橘子爷爷」摊位 2014 年开业，原本只是路边摊，2018 年因为综艺《Three Meals a Day》取景一夜爆红。</div>
+        <div class="lore-section"><span class="lore-h">汉拿峰是什么橘子</span>汉拿峰（한라봉 / Hallabong）是 1972 年从日本引入的「清见」（Kiyomi）橘子杂交种，1990 年代在济州大规模种植。「汉拿峰」取名于汉拿山——因为顶部凸起像汉拿山的山顶。它的特点是糖度高（13-15 度，普通橘子 9-10 度）、几乎无籽。济州 60% 的汉拿峰用于鲜食，其余做加工。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🥩 Charcoal-grilled black pork skewer — eat while walking</div><div class="zh">炭烤黑猪肉串（边走边吃）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">不是传统吃法</span>东门市场的烤黑猪肉串（흑돼지 꼬치）是 2010 年代后期才有的「市场食品」——传统上济州人吃黑猪是烤五花肉、汤、白切，没有「串」这种形式。串是为了游客方便边走边吃发明的。但用的肉是真的济州黑猪——市场摊主和六号门的肉档有合作，每天清晨进货，下午基本售空。</div>
+        <div class="lore-section"><span class="lore-h">酱汁的秘密</span>好的烤串店酱汁会用<b>济州酱油</b>（간장，比首尔酱油更甜）+ 蒜蓉 + <b>汉拿峰橘子皮</b>（少量提香）+ 黑糖腌制。低端店则用工业烤肉酱+韩式辣酱混合，味道齁咸——分辨方法是看肉块切面是否有「橙色光泽」（汉拿峰皮的标志），有的就是好店。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍊 Fresh-squeezed tangerine juice — ~¥15/cup</div><div class="zh">鲜榨橘子汁（橘子爷爷，约¥15/杯）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">不是真爷爷</span>「橘子爷爷」（귤할아버지）是品牌名，不是老板。本店老板娘 Park Yeong-mi 现在 50 多岁，2014 年开业时她父亲——当时 78 岁的退休橘农，作为「形象代言人」站在摊前——这个画面被游客拍下发到 Instagram 后火了，成了品牌商标。爷爷在 2020 年过世，但摊位还在，老板娘把爸爸的照片做成招牌挂着。</div>
+        <div class="lore-section"><span class="lore-h">一杯橘子汁的工艺</span>当天清晨从西归浦农场直送的汉拿峰，<b>3 颗汉拿峰才榨一杯 250ml</b>（因为只用果肉，不要果皮的苦油）。一杯 ₩6,000，比超市瓶装橘子汁鲜得多。橘子大福也是当天现做——糯米皮的赏味期是 4 小时，下午去常会发现售罄。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍫 Tangerine chocolate gift boxes — ~20% cheaper than airport</div><div class="zh">橘子巧克力礼盒（比机场/免税店便宜约20%）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">两个流派</span><b>老派 Daeheung Foods</b>（대흥식품，红色包装，1988 年开业，市场份额 60%）：用橘子粉+可可粉的工业巧克力，便宜（机场卖 ₩15,000/盒），但化学香精味重。<b>新派 Jeju Beans</b>（济州本地新品牌，棕色包装，2010 年代后兴起）：用真正的橘子皮屑+ 70% 黑巧，价格高（机场卖 ₩28,000/盒），但味道近似真橘子。东门市场都比机场便宜约 20%——这是真的，因为机场抽 30% 渠道费，市场不抽。</div>
+        <div class="lore-section"><span class="lore-h">买之前的检查</span>看包装侧面成分表：<b>真材料应该写「귤껍질」（橘子皮）或「귤분」（橘子粉），而不只是「향료」（香精）</b>。如果只写香精，那是工业糖果级，不是巧克力。汉拿峰巧克力（한라봉초콜릿）比普通橘子巧克力贵 30-50%，但味道更立体，值得多花。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🌿 Red ginseng products — better value than Seoul</div><div class="zh">红参产品（性价比高于首尔）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">韩国红参的等级</span>韩国红参（홍삼 / Hongsam）由 6 年根的人参蒸 9 次、晒 9 次（구증구포）制成，整个过程约 3 个月。等级从高到低：<b>天参</b>（천삼，最高，每年只产数百根，万元级别）、<b>地参</b>、<b>良参</b>（最常见的礼品级）、<b>切参</b>（碎片，制成饮料/茶包）。济州为什么便宜——济州不产红参（红参主产地是忠清南道锦山），市场卖的从内陆调来，但济州是免税岛，进货成本低，零售价比首尔便宜 15-20%。</div>
+        <div class="lore-section"><span class="lore-h">辨别真假</span>正经红参礼盒应该有 <b>KGC 正官庄</b>（정관장）或 <b>Punggi</b>（풍기）的认证标志——这两个是国营/百年品牌。摊位上有些便宜的「济州红参」实际是杂牌，价格虽低，但浓度可能只有正官庄的 30%。买之前问「이거 정관장이에요?」（这是正官庄吗？）——如果店家含糊，那就不是。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🍑 Hallabong tangerines (fresh) — heavy, watch baggage weight</div><div class="zh">汉拿峰橘子鲜果（重，注意行李重量）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">能不能带回中国</span>严格说不能——中国海关规定鲜果禁止入境（防虫害）。济州机场出关时不查（韩方不管），中国深圳机场入境时如果走红色通道（自报），按规定会被没收；走绿色通道，过 X 光时新鲜水果可能被发现也可能漏过——这是灰色地带。<b>保险做法</b>：买「汉拿峰果汁」或「汉拿峰干」代替鲜果，合法且不重。</div>
+        <div class="lore-section"><span class="lore-h">如果一定要带</span>建议每人不超过 2 公斤，包装在原盒里（不要散装），放在行李箱中部夹在衣服中间——降低被开箱查到的概率。但仍然有风险，深圳机场对水果偶尔严查。</div>
+        </div></details></li>
+    <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🪨 Amethyst ornaments — Jeju specialty</div><div class="zh">紫水晶摆件（济州特产）</div></div><details class="lore"><summary>Story · 故事 &amp; 冷知识</summary><div class="lore-body">
+        <div class="lore-section"><span class="lore-h">济州为什么有紫水晶</span>济州的火山岩中含有大量<b>水晶气孔</b>（geode）——熔岩冷却时困住的气泡，里面慢慢结晶出二氧化硅，加上铁离子杂质就成紫水晶。济州东南部的城山-表善地区是主要产地，1970 年代开始小规模开采，2000 年代形成产业。</div>
+        <div class="lore-section"><span class="lore-h">等级与辨别</span>紫水晶按颜色饱和度分等级：<b>深紫</b>（最贵）、<b>中紫</b>（标准淡紫，最常见）、<b>浅紫</b>（接近无色，便宜）。东门市场的紫水晶摆件大多是中紫到浅紫等级，价格 ₩30,000-150,000；高端深紫摆件要去专门的水晶店（济州市内有 5-6 家）才能买到，单件可达 ₩500,000+。买之前对着光看——真水晶里能看到天然包裹体（云雾状），完全透明无杂质的反而可能是合成品或玻璃。</div>
+        </div></details></li>
     <li onclick="toggleCheck(this)"><div class="chk-box"></div><div class="chk-content"><div class="en">🎁 Tangerine rice cake gift set</div><div class="zh">橘子年糕礼盒</div></div></li>
   </ul>
 </div>
@@ -1552,7 +1729,7 @@ nav {
 </div>
 
 <div style="text-align:center;padding:40px 24px;font-size:11px;color:rgba(26,20,16,.26);letter-spacing:.15em">
-  Logan &amp; Sarah · Jeju Island · May 2026 · v7
+  Logan &amp; Sarah · Jeju Island · May 2026 · v8
 </div>
 
 <script>
